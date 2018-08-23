@@ -1,0 +1,11 @@
+<% if object.errors.any? %>
+  <div class="ui negative message">
+    <i class="close icon"></i>
+      <div class="header"><%= pluralize(object.errors.count, "erro impediu", "erros impediram") %> este registro de ser salvo:</div>
+    <ul class="list">
+    <% object.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

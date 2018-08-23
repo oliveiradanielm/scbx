@@ -152,7 +152,11 @@ pt-BR:
       submit: Salvar %{model}
       update: Atualizar %{model}
     links:
+      new: Novo
+      edit: Editar
       back: Voltar
+      show: Visualizar
+      destroy: Excluir
   number:
     currency:
       format:

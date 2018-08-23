@@ -1,15 +1,16 @@
 <div class="ui inverted menu">
   <div class="ui container">
-    <a href="#" class="header item">
+    <a href="<%= root_path %>" class="header item">
       <img class="logo" src="/assets/logo.png">&nbsp;&nbsp;
-        Project Name
+        SCBx
     </a>
-    <a href="#" class="item">Home</a>
+    <a href="<%= root_path %>" class="item">Home</a>
     <div class="ui simple dropdown item">
-      Dropdown <i class="dropdown icon"></i>
+      Cadastros <i class="dropdown icon"></i>
       <div class="menu">
-        <a class="item" href="#">Link Item</a>
-        <a class="item" href="#">Link Item</a>
+        <a class="item" href="<%= atletas_path %>">Atletas</a>
+        <a class="item" href="<%= categorias_path %>">Categorias</a>
+        <a class="item" href="<%= tipo_categorias_path %>">Tipos de Categorias</a>
         <div class="divider"></div>
         <div class="header">Header Item</div>
         <div class="item">
@@ -28,7 +29,7 @@
       <a href="<%= request.path %>?locale=en" class="item right floated">
         <i class="us flag"></i>
       </a>
-      <a href="<%= request.path %>?locale=pt-BR" class="item right floated">
+      <a href="<%= request.path %>" class="item right floated">
         <i class="br flag"></i>
       </a>
     </div>

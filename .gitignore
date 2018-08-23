@@ -20,7 +20,6 @@
 # Ignore uploaded files in development
 /storage/*
 
-/node_modules
 /yarn-error.log
 
 /public/assets
@@ -29,3 +28,4 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .tasks.json
+node_modules/

@@ -28,7 +28,38 @@ var ready = function() {
   });
 
   $('select.dropdown').dropdown();
+  
+  $('[type="submit"], a[data-method="post"]').click(function() {
+    show_loading();
+  });
+
+  $('.message .close').on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  });
+
+  $('select.dropdown').dropdown();
 }
+
+function show_loading() {
+  $('#main-loading').addClass('active')
+}
+
+function hide_loading() {
+  $('#main-loading').removeClass('active')
+}
+
+$(document).on('turbolinks:click', function() { show_loading(); })
+// $(document).on('turbolinks:before-visit', function() { })
+$(document).on('turbolinks:visit', function() { show_loading(); })
+// $(document).on('turbolinks:request-start', function() { })
+$(document).on('turbolinks:request-end', function() { hide_loading(); })
+// $(document).on('turbolinks:before-cache', function() { })
+// $(document).on('turbolinks:before-render', function() { })
+$(document).on('turbolinks:render', function() { hide_loading(); })
+
 
 if (Turbolinks.supported) {
   $(document).on("turbolinks:load", ready);

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyString
+  idade_minima: 1
+  idade_maxima: 1
+  livre: false
+  tipo_categoria: one
+
+two:
+  descricao: MyString
+  idade_minima: 1
+  idade_maxima: 1
+  livre: false
+  tipo_categoria: two

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AppRails5</title>
+    <title>SCBx</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,7 +11,11 @@
 
   <body>
     <%= render partial: 'layouts/menu' %>
+    <div class="ui inverted dimmer" id="main-loading">
+      <div class="ui big text loader">Carregando</div>
+    </div>
     <div class="ui container">
+      <%= flash_messages %>
       <%= yield %>
     </div>
   </body>

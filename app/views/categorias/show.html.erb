@@ -1,0 +1,27 @@
+<p>
+  <strong>Descricao:</strong>
+  <%= @categoria.descricao %>
+</p>
+
+<p>
+  <strong>Idade minima:</strong>
+  <%= @categoria.idade_minima %>
+</p>
+
+<p>
+  <strong>Idade maxima:</strong>
+  <%= @categoria.idade_maxima %>
+</p>
+
+<p>
+  <strong>Livre:</strong>
+  <%= @categoria.livre %>
+</p>
+
+<p>
+  <strong>Tipo categoria:</strong>
+  <%= @categoria.tipo_categoria %>
+</p>
+
+<%= link_to 'Edit', edit_categoria_path(@categoria) %> |
+<%= link_to 'Back', categorias_path %>

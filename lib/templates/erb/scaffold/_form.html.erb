@@ -1,18 +1,8 @@
-<%%= form_with(model: <%= model_resource_name %>, local: true) do |form| %>
-  <%% if <%= singular_table_name %>.errors.any? %>
-    <div id="error_explanation">
-      <h2><%%= pluralize(<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h2>
-
-      <ul>
-      <%% <%= singular_table_name %>.errors.full_messages.each do |message| %>
-        <li><%%= message %></li>
-      <%% end %>
-      </ul>
-    </div>
-  <%% end %>
+<%%= form_with(model: <%= model_resource_name %>, local: true, html: { class: 'ui form' }) do |form| %>
+  <%%= render partial: 'layouts/errors_messages', locals: { object: <%= model_resource_name %> } %>
 
 <% attributes.each do |attribute| -%>
-  <div class="field">
+  <div class="required field">
 <% if attribute.password_digest? -%>
     <%%= form.label :password %>
     <%%= form.password_field :password %>
@@ -29,6 +19,7 @@
 
 <% end -%>
   <div class="actions">
-    <%%= form.submit %>
+    <%%= form.submit nil, class: 'ui primary button' %>
+    <%%= link_to t('helpers.links.back'), <%= plural_table_name %>_path, class: 'ui button right floated' %>
   </div>
 <%% end %>

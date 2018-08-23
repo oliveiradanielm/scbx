@@ -1,0 +1,35 @@
+<%= form_with(model: categoria, local: true, html: { class: 'ui form' }) do |form| %>
+  <%= render partial: 'layouts/errors_messages', locals: { object: categoria } %>
+
+  <div class="required field">
+    <%= form.label :descricao %>
+    <%= form.text_field :descricao %>
+  </div>
+
+  <div class="required field">
+    <%= form.label :idade_minima %>
+    <%= form.number_field :idade_minima %>
+  </div>
+
+  <div class="required field">
+    <%= form.label :idade_maxima %>
+    <%= form.number_field :idade_maxima %>
+  </div>
+
+  <div class="required field">
+    <div class="ui checkbox">
+      <%= form.check_box :livre %>
+      <%= form.label :livre %>
+    </div>
+  </div>
+
+  <div class="required field">
+    <%= form.label :tipo_categoria_id %>
+    <%= form.select :tipo_categoria_id, TipoCategoria.all.collect{|p| [ p.descricao, p.id ] }, {}, class: 'ui search dropdown' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit nil, class: 'ui primary button' %>
+    <%= link_to t('helpers.links.back'), categorias_path, class: 'ui button right floated' %>
+  </div>
+<% end %>

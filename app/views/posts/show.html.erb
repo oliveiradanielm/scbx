@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @post.title %>
@@ -19,7 +17,9 @@
 <ul>
   <% @post.files.each do |file| %>
     <li>
-      <%= link_to file.blob.filename, url_for(filename) %>
+      <%= link_to url_for(file) do %>
+        <%= image_tag url_for(file), size: "100x100" %>
+      <% end %> 
       <%= link_to '<i class="fa fa-trash"></i>'.html_safe, post_file_upload_path(@post, file), method: :delete, data: { confirm: "Tem certeza?" } %>
     </li>
     <% end %>

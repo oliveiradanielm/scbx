@@ -10,16 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_201115) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 2018_08_23_050041) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -36,9 +33,78 @@ ActiveRecord::Schema.define(version: 2018_07_26_201115) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "atletas", force: :cascade do |t|
+    t.string "nome"
+    t.string "nacionalidade"
+    t.string "naturalidade"
+    t.date "data_nascimento"
+    t.integer "sexo"
+    t.string "cpf"
+    t.string "rg"
+    t.string "email"
+    t.string "passaporte"
+    t.date "validade_passaporte"
+    t.integer "tipo_sanguineo_id"
+    t.string "licenca_cbc"
+    t.string "codigo_uci"
+    t.string "nome_mae"
+    t.string "nome_pai"
+    t.string "logradouro"
+    t.string "numero"
+    t.string "complemento"
+    t.string "bairro"
+    t.string "cep"
+    t.string "cidade"
+    t.string "uf"
+    t.string "telefone_residencial"
+    t.string "telefone_celular"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+  end
+
+  create_table "audits", force: :cascade do |t|
+    t.integer "auditable_id"
+    t.string "auditable_type"
+    t.integer "associated_id"
+    t.string "associated_type"
+    t.integer "user_id"
+    t.string "user_type"
+    t.string "username"
+    t.string "action"
+    t.text "audited_changes"
+    t.integer "version", default: 0
+    t.string "comment"
+    t.string "remote_address"
+    t.string "request_uuid"
+    t.datetime "created_at"
+    t.index ["associated_type", "associated_id"], name: "associated_index"
+    t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
+    t.index ["created_at"], name: "index_audits_on_created_at"
+    t.index ["request_uuid"], name: "index_audits_on_request_uuid"
+    t.index ["user_id", "user_type"], name: "user_index"
+  end
+
+  create_table "categorias", force: :cascade do |t|
+    t.string "descricao"
+    t.integer "idade_minima"
+    t.integer "idade_maxima"
+    t.boolean "livre"
+    t.integer "tipo_categoria_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tipo_categoria_id"], name: "index_categorias_on_tipo_categoria_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tipo_categorias", force: :cascade do |t|
+    t.string "descricao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

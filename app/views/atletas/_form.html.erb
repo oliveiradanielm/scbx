@@ -1,0 +1,127 @@
+<%= form_with(model: atleta, local: true, html: {class: 'ui form'}) do |form| %>
+
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nacionalidade %>
+    <%= form.text_field :nacionalidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :naturalidade %>
+    <%= form.text_field :naturalidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_nascimento %>
+    <%= form.date_select :data_nascimento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sexo %>
+    <%= form.number_field :sexo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cpf %>
+    <%= form.text_field :cpf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rg %>
+    <%= form.text_field :rg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :passaporte %>
+    <%= form.text_field :passaporte %>
+  </div>
+
+  <div class="field">
+    <%= form.label :validade_passaporte %>
+    <%= form.date_select :validade_passaporte %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo_sanguineo_id %>
+    <%= form.number_field :tipo_sanguineo_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :licenca_cbc %>
+    <%= form.text_field :licenca_cbc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :codigo_uci %>
+    <%= form.text_field :codigo_uci %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nome_mae %>
+    <%= form.text_field :nome_mae %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nome_pai %>
+    <%= form.text_field :nome_pai %>
+  </div>
+
+  <div class="field">
+    <%= form.label :logradouro %>
+    <%= form.text_field :logradouro %>
+  </div>
+
+  <div class="field">
+    <%= form.label :numero %>
+    <%= form.text_field :numero %>
+  </div>
+
+  <div class="field">
+    <%= form.label :complemento %>
+    <%= form.text_field :complemento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bairro %>
+    <%= form.text_field :bairro %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cep %>
+    <%= form.text_field :cep %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cidade %>
+    <%= form.text_field :cidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :uf %>
+    <%= form.text_field :uf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefone_residencial %>
+    <%= form.text_field :telefone_residencial %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefone_celular %>
+    <%= form.text_field :telefone_celular %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
