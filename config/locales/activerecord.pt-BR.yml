@@ -5,6 +5,8 @@ pt-BR:
         one: Postagem
         other: Postagens
       categoria: Categoria
+      atleta: Atleta
+      tipo_categoria: Tipos de Categoria
     attributes:
       post:
         title: Título
@@ -14,3 +16,22 @@ pt-BR:
         idade_maxima: Idade Máxima
         descricao: Descrição
         tipo_categoria_id: Tipo de Categoria
+      atleta:
+        data_nascimento: Data de Nascimento
+        cpf: CPF
+        rg: RG
+        email: E-mail
+        validade_passaporte: Validade do Passaporte
+        tipo_sanguineo_id: Tipo Sanguíneo
+        licenca_cbc: Licença CBC
+        codigo_uci: Código UCI
+        nome_mae: Nome da Mãe
+        nome_pai: Nome do Pai
+        numero: Número
+        primeiro_nome: Primeiro Nome
+        ultimo_nome: Último Nome
+        nome: Nome Completo
+        uf: UF
+        cep: CEP
+      tipo_categoria:
+        descricao: Descrição

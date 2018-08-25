@@ -1,127 +1,152 @@
-<%= form_with(model: atleta, local: true, html: {class: 'ui form'}) do |form| %>
+<%= form_with(model: atleta, local: true, html: {class: 'ui form grey segment'}) do |form| %>
+  <%= render partial: 'layouts/errors_messages', locals: { object: atleta } %>
 
+  <h4 class="ui dividing header">Dados do Atleta</h4>
+  <div class="three fields">
+    <div class="required eight wide field">
+      <%= form.label :nome %>
+      <%= form.text_field :nome %>
+    </div>
 
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
+    <div class="required four wide field">
+      <%= form.label :data_nascimento %>
+      <div class="ui calendar datepicker-year">
+        <div class="ui input left icon">
+          <i class="calendar alternate outline icon"></i>
+          <%= form.text_field :data_nascimento %>
+        </div>
+      </div>
+    </div>
+
+    <div class="four wide field">
+      <%= form.label :email %>
+      <%= form.email_field :email %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :nacionalidade %>
-    <%= form.text_field :nacionalidade %>
+  <div class="two fields">
+    <div class="field">
+      <%= form.label :nome_mae %>
+      <%= form.text_field :nome_mae %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :nome_pai %>
+      <%= form.text_field :nome_pai %>
+    </div>
+  </div>
+  
+  <div class="three fields">
+    <div class="required field">
+      <%= form.label :cpf %>
+      <%= form.text_field :cpf %>
+    </div>
+    <div class="field">
+      <%= form.label :rg %>
+      <%= form.text_field :rg %>
+    </div>
+    <div class="required field">
+      <%= form.label :sexo %>
+      <%= form.select :sexo, [['Masculino', 1], ['Feminino', 2]], {prompt: 'Selecione'}, class: 'ui dropdown' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :naturalidade %>
-    <%= form.text_field :naturalidade %>
+  <div class="three fields">
+  
+    <div class="field">
+      <%= form.label :tipo_sanguineo_id %>
+      <%= form.select :tipo_sanguineo_id, TipoSanguineo.all.collect{|s| [s.descricao, s.id]}, {prompt: 'Selecione'}, class: 'ui dropdown'  %>
+    </div>
+    <div class="field">
+        <%= form.label :passaporte %>
+        <%= form.text_field :passaporte %>
+      </div>
+  
+      <div class="field">
+        <%= form.label :validade_passaporte %>
+        <div class="ui calendar datepicker" id="example1">
+          <div class="ui input left icon">
+            <i class="calendar alternate outline icon"></i>
+            <%= form.text_field :validade_passaporte %>
+          </div>
+        </div>
+      </div>
   </div>
 
-  <div class="field">
-    <%= form.label :data_nascimento %>
-    <%= form.date_select :data_nascimento %>
+  <h4 class="ui dividing header">Dados CBC</h4>
+  <div class="two fields">
+    <div class="field">
+      <%= form.label :licenca_cbc %>
+      <%= form.text_field :licenca_cbc %>
+    </div>
+
+    <div class="field">
+      <%= form.label :codigo_uci %>
+      <%= form.text_field :codigo_uci %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :sexo %>
-    <%= form.number_field :sexo %>
+  <h4 class="ui dividing header">Endereço do atleta</h4>
+
+  <div class="fields">
+    <div class="four wide field">
+      <%= form.label :cep %>
+      <%= form.text_field :cep %>
+    </div>
+  </div>
+  
+  <div class="fields">
+    <div class="four wide field">
+      <%= form.label :logradouro %>
+      <%= form.text_field :logradouro %>
+    </div>
+
+    <div class="two wide field">
+      <%= form.label :numero %>
+      <%= form.text_field :numero %>
+    </div>
+
+    <div class="four wide field">
+      <%= form.label :bairro %>
+      <%= form.text_field :bairro %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
+  <div class="fields">
+    <div class="eight wide field">
+      <%= form.label :complemento %>
+      <%= form.text_field :complemento %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :rg %>
-    <%= form.text_field :rg %>
+  <div class="fields">
+    <div class="required three wide field">
+      <%= form.label :cidade %>
+      <%= form.text_field :cidade %>
+    </div>
+
+    <div class="required one wide field">
+      <%= form.label :uf %>
+      <%= form.text_field :uf %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+  <div class="two fields">
+    <div class="field">
+      <%= form.label :telefone_residencial %>
+      <%= form.text_field :telefone_residencial %>
+    </div>
 
-  <div class="field">
-    <%= form.label :passaporte %>
-    <%= form.text_field :passaporte %>
-  </div>
-
-  <div class="field">
-    <%= form.label :validade_passaporte %>
-    <%= form.date_select :validade_passaporte %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tipo_sanguineo_id %>
-    <%= form.number_field :tipo_sanguineo_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :licenca_cbc %>
-    <%= form.text_field :licenca_cbc %>
-  </div>
-
-  <div class="field">
-    <%= form.label :codigo_uci %>
-    <%= form.text_field :codigo_uci %>
-  </div>
-
-  <div class="field">
-    <%= form.label :nome_mae %>
-    <%= form.text_field :nome_mae %>
-  </div>
-
-  <div class="field">
-    <%= form.label :nome_pai %>
-    <%= form.text_field :nome_pai %>
-  </div>
-
-  <div class="field">
-    <%= form.label :logradouro %>
-    <%= form.text_field :logradouro %>
-  </div>
-
-  <div class="field">
-    <%= form.label :numero %>
-    <%= form.text_field :numero %>
-  </div>
-
-  <div class="field">
-    <%= form.label :complemento %>
-    <%= form.text_field :complemento %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bairro %>
-    <%= form.text_field :bairro %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cep %>
-    <%= form.text_field :cep %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cidade %>
-    <%= form.text_field :cidade %>
-  </div>
-
-  <div class="field">
-    <%= form.label :uf %>
-    <%= form.text_field :uf %>
-  </div>
-
-  <div class="field">
-    <%= form.label :telefone_residencial %>
-    <%= form.text_field :telefone_residencial %>
-  </div>
-
-  <div class="field">
-    <%= form.label :telefone_celular %>
-    <%= form.text_field :telefone_celular %>
+    <div class="field">
+      <%= form.label :telefone_celular %>
+      <%= form.text_field :telefone_celular %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'ui primary button' %>
+    <%= link_to t('helpers.links.back'), atletas_path, class: 'ui right floated button' %>
   </div>
+
+  <br>
 <% end %>

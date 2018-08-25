@@ -1,13 +1,14 @@
 <%%= link_to t('helpers.links.new'), new_<%= singular_route_name %>_path, class: 'ui right floated mini primary button' %>
-<h1><%%= <%= singular_route_name.camelcase %>.model_name.human.pluralize %></h1>
+<h2><%%= <%= singular_route_name.camelcase %>.model_name.human.pluralize %></h2>
 
+<div class="ui teal segment">
 <table class="ui striped table">
   <thead>
     <tr>
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
       <th><%%= <%= singular_table_name.camelcase %>.human_attribute_name(:<%= attribute.name %>) %></th>
 <% end -%>
-      <th><%%= t('helpers.links.actions') %></th>
+      <th class="right aligned"><%%= t('helpers.links.actions') %></th>
     </tr>
   </thead>
 
@@ -18,7 +19,7 @@
         <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
 <% end -%>
 
-        <td>
+        <td class="right aligned">
           <div class="ui icon buttons">
             <%%= link_to(content_tag(:i, nil, class: 'info circle icon'), <%= model_resource_name %>, class: 'ui button') %>
             <%%= link_to content_tag(:i, nil, class: 'edit outline icon'), edit_<%= singular_route_name %>_path(<%= singular_table_name %>), class: 'ui button' %>
@@ -32,3 +33,4 @@
 
 <br>
 
+</div>

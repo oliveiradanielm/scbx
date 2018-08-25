@@ -1,122 +1,146 @@
-<p>
-  <strong>Nome:</strong>
-  <%= @atleta.nome %>
-</p>
+<div class="ui mini form black segment">
+<h4 class="ui dividing header">Dados do Atleta</h4>
+  <div class="three fields">
+    <div class="eight wide field">
+      <%= label_tag :nome %>
+      <%= text_field_tag :nome, @atleta.nome, disabled: '', tabindex: '-1'  %>
+    </div>
 
-<p>
-  <strong>Nacionalidade:</strong>
-  <%= @atleta.nacionalidade %>
-</p>
+    <div class="four wide field">
+      <%= label_tag :data_nascimento %>
+      <div class="ui calendar datepicker-year">
+        <div class="ui input left icon">
+          <i class="calendar alternate outline icon"></i>
+          <%= text_field_tag :data_nascimento, @atleta.data_nascimento.strftime('%d/%m/%Y'), disabled: '', tabindex: '-1'  %>
+        </div>
+      </div>
+    </div>
 
-<p>
-  <strong>Naturalidade:</strong>
-  <%= @atleta.naturalidade %>
-</p>
+    <div class="four wide field">
+      <%= label_tag :email %>
+      <%= text_field_tag :email, @atleta.email, disabled: '', tabindex: '-1'  %>
+    </div>
+  </div>
 
-<p>
-  <strong>Data nascimento:</strong>
-  <%= @atleta.data_nascimento %>
-</p>
+  <div class="two fields">
+    <div class="field">
+      <%= label_tag :nome_mae %>
+      <%= text_field_tag :nome_mae, @atleta.nome_mae, disabled: '', tabindex: '-1'  %>
+    </div>
+  
+    <div class="field">
+      <%= label_tag :nome_pai %>
+      <%= text_field_tag :nome_pai, @atleta.nome_pai, disabled: '', tabindex: '-1'  %>
+    </div>
+  </div>
+  
+  <div class="three fields">
+    <div class="field">
+      <%= label_tag :cpf %>
+      <%= text_field_tag :cpf, @atleta.cpf, disabled: '', tabindex: '-1'  %>
+    </div>
+    <div class="field">
+      <%= label_tag :rg %>
+      <%= text_field_tag :rg, @atleta.rg, disabled: '', tabindex: '-1'  %>
+    </div>
+    <div class="field">
+      <%= label_tag :sexo %>
+      <%= text_field_tag :sexo, @atleta.sexo_desc, disabled: '', tabindex: '-1'  %>
+    </div>
+  </div>
 
-<p>
-  <strong>Sexo:</strong>
-  <%= @atleta.sexo %>
-</p>
+  <div class="three fields">
+  
+    <div class="field">
+      <%= label_tag :tipo_sanguineo_id %>
+      <%= text_field_tag :tipo_sanguineo_id, @atleta.tipo_sanguineo.try(:descricao), disabled: '', tabindex: '-1'  %>
+    </div>
+    <div class="field">
+        <%= label_tag :passaporte %>
+        <%= text_field_tag :passaporte, @atleta.passaporte, disabled: '', tabindex: '-1'  %>
+      </div>
+  
+      <div class="field">
+        <%= label_tag :validade_passaporte %>
+        <div class="ui calendar datepicker" id="example1">
+          <div class="ui input left icon">
+            <i class="calendar alternate outline icon"></i>
+            <%= text_field_tag :validade_passaporte, @atleta.validade_passaporte, disabled: '', tabindex: '-1'  %>
+          </div>
+        </div>
+      </div>
+  </div>
 
-<p>
-  <strong>Cpf:</strong>
-  <%= @atleta.cpf %>
-</p>
+  <h4 class="ui dividing header">Dados CBC</h4>
+  <div class="two fields">
+    <div class="field">
+      <%= label_tag :licenca_cbc %>
+      <%= text_field_tag :licenca_cbc, @atleta.licenca_cbc, disabled: '', tabindex: '-1'  %>
+    </div>
 
-<p>
-  <strong>Rg:</strong>
-  <%= @atleta.rg %>
-</p>
+    <div class="field">
+      <%= label_tag :codigo_uci %>
+      <%= text_field_tag :codigo_uci, @atleta.codigo_uci, disabled: '', tabindex: '-1'  %>
+    </div>
+  </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @atleta.email %>
-</p>
+  <h4 class="ui dividing header">Endereço do atleta</h4>
 
-<p>
-  <strong>Passaporte:</strong>
-  <%= @atleta.passaporte %>
-</p>
+  <div class="fields">
+    <div class="four wide field">
+      <%= label_tag :cep %>
+      <%= text_field_tag :cep, @atleta.cep, disabled: '', tabindex: '-1'  %>
+    </div>
+  </div>
+  
+  <div class="fields">
+    <div class="four wide field">
+      <%= label_tag :logradouro %>
+      <%= text_field_tag :logradouro, @atleta.logradouro, disabled: '', tabindex: '-1'  %>
+    </div>
 
-<p>
-  <strong>Validade passaporte:</strong>
-  <%= @atleta.validade_passaporte %>
-</p>
+    <div class="two wide field">
+      <%= label_tag :numero %>
+      <%= text_field_tag :numero, @atleta.numero, disabled: '', tabindex: '-1'  %>
+    </div>
 
-<p>
-  <strong>Tipo sanguineo:</strong>
-  <%= @atleta.tipo_sanguineo_id %>
-</p>
+    <div class="four wide field">
+      <%= label_tag :bairro %>
+      <%= text_field_tag :bairro, @atleta.bairro, disabled: '', tabindex: '-1'  %>
+    </div>
+  </div>
 
-<p>
-  <strong>Licenca cbc:</strong>
-  <%= @atleta.licenca_cbc %>
-</p>
+  <div class="fields">
+    <div class="eight wide field">
+      <%= label_tag :complemento %>
+      <%= text_field_tag :complemento, @atleta.complemento, disabled: '', tabindex: '-1'  %>
+    </div>
+  </div>
 
-<p>
-  <strong>Codigo uci:</strong>
-  <%= @atleta.codigo_uci %>
-</p>
+  <div class="fields">
+    <div class="three wide field">
+      <%= label_tag :cidade %>
+      <%= text_field_tag :cidade, @atleta.cidade, disabled: '', tabindex: '-1'  %>
+    </div>
 
-<p>
-  <strong>Nome mae:</strong>
-  <%= @atleta.nome_mae %>
-</p>
+    <div class="one wide field">
+      <%= label_tag :uf %>
+      <%= text_field_tag :uf, @atleta.uf, disabled: '', tabindex: '-1'  %>
+    </div>
+  </div>
 
-<p>
-  <strong>Nome pai:</strong>
-  <%= @atleta.nome_pai %>
-</p>
+  <div class="two fields">
+    <div class="field">
+      <%= label_tag :telefone_residencial %>
+      <%= text_field_tag :telefone_residencial, @atleta.telefone_residencial, disabled: '', tabindex: '-1'  %>
+    </div>
 
-<p>
-  <strong>Logradouro:</strong>
-  <%= @atleta.logradouro %>
-</p>
+    <div class="field">
+      <%= label_tag :telefone_celular %>
+      <%= text_field_tag :telefone_celular, @atleta.telefone_celular, disabled: '', tabindex: '-1'  %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Numero:</strong>
-  <%= @atleta.numero %>
-</p>
-
-<p>
-  <strong>Complemento:</strong>
-  <%= @atleta.complemento %>
-</p>
-
-<p>
-  <strong>Bairro:</strong>
-  <%= @atleta.bairro %>
-</p>
-
-<p>
-  <strong>Cep:</strong>
-  <%= @atleta.cep %>
-</p>
-
-<p>
-  <strong>Cidade:</strong>
-  <%= @atleta.cidade %>
-</p>
-
-<p>
-  <strong>Uf:</strong>
-  <%= @atleta.uf %>
-</p>
-
-<p>
-  <strong>Telefone residencial:</strong>
-  <%= @atleta.telefone_residencial %>
-</p>
-
-<p>
-  <strong>Telefone celular:</strong>
-  <%= @atleta.telefone_celular %>
-</p>
-
-<%= link_to 'Edit', edit_atleta_path(@atleta) %> |
-<%= link_to 'Back', atletas_path %>
+<%= link_to t('helpers.links.edit'), edit_atleta_path(@atleta), class: 'ui primary button' %>
+<%= link_to t('helpers.links.back'), atletas_url, class: 'ui button' %>

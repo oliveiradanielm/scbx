@@ -24,7 +24,7 @@
       @tipo_categoria = TipoCategoria.new(tipo_categoria_params)
   
       if @tipo_categoria.save
-        redirect_to @tipo_categoria, notice: 'Tipo categoria was successfully created.'
+        redirect_to @tipo_categoria, notice: t('flash.create.notice')
       else
         render :new
       end
@@ -33,7 +33,7 @@
     # PATCH/PUT /tipo_categorias/1
     def update
       if @tipo_categoria.update(tipo_categoria_params)
-        redirect_to @tipo_categoria, notice: 'Tipo categoria was successfully updated.'
+        redirect_to @tipo_categoria, notice: t('flash.update.notice')
       else
         render :edit
       end
@@ -42,7 +42,7 @@
     # DELETE /tipo_categorias/1
     def destroy
       @tipo_categoria.destroy
-      redirect_to tipo_categorias_url, notice: 'Tipo categoria was successfully destroyed.'
+      redirect_to tipo_categorias_url, notice: t('flash.destroy.notice')
     end
   
     private

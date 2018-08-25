@@ -1,5 +1,3 @@
-<h1>New Atleta</h1>
+<h1 class="ui dividing header"><%= t('helpers.links.create') %> <%= @atleta.class.model_name.human %></h1>
 
 <%= render 'form', atleta: @atleta %>
-
-<%= link_to 'Back', atletas_path %>

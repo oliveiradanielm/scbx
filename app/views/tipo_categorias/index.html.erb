@@ -1,11 +1,12 @@
 <%= link_to t('helpers.links.new'), new_tipo_categoria_path, class: 'ui right floated mini primary button' %>
-<h1>Tipo Categorias</h1>
+<h2><%= TipoCategoria.model_name.human.pluralize %></h2>
 
+<div class="ui teal segment">
 <table class="ui striped table">
   <thead>
     <tr>
-      <th>Descricao</th>
-      <th colspan="3"></th>
+      <th><%= TipoCategoria.human_attribute_name(:descricao) %></th>
+      <th class="right aligned"><%= t('helpers.links.actions') %></th>
     </tr>
   </thead>
 
@@ -13,9 +14,14 @@
     <% @tipo_categorias.each do |tipo_categoria| %>
       <tr>
         <td><%= tipo_categoria.descricao %></td>
-        <td><%= link_to 'Show', tipo_categoria %></td>
-        <td><%= link_to 'Edit', edit_tipo_categoria_path(tipo_categoria) %></td>
-        <td><%= link_to 'Destroy', tipo_categoria, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td class="right aligned">
+          <div class="ui icon buttons">
+            <%= link_to(content_tag(:i, nil, class: 'info circle icon'), tipo_categoria, class: 'ui button') %>
+            <%= link_to content_tag(:i, nil, class: 'edit outline icon'), edit_tipo_categoria_path(tipo_categoria), class: 'ui button' %>
+            <%= link_to content_tag(:i, nil, class: 'trash alternate outline icon'), tipo_categoria, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'ui button' %>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -23,3 +29,4 @@
 
 <br>
 
+</div>

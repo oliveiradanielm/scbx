@@ -153,9 +153,11 @@ pt-BR:
       update: Atualizar %{model}
     links:
       new: Novo
+      create: Criar
       edit: Editar
       back: Voltar
       show: Visualizar
+      list: Listar
       destroy: Excluir
       actions: Ações
   flash:

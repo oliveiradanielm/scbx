@@ -1,0 +1,2 @@
+class TipoSanguineo < ApplicationRecord
+end

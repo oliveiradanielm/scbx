@@ -13,6 +13,7 @@
 //= require jquery
 //= require semantic-ui-css/semantic.min
 //= require semantic-ui-css/components/dropdown.min.js
+//= require semantic-ui-calendar/dist/calendar.min.js
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
@@ -41,6 +42,53 @@ var ready = function() {
   });
 
   $('select.dropdown').dropdown();
+  
+  $('.datepicker').calendar({
+    type: 'date',
+    text: {
+      days: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+      months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+      today: 'Hoje',
+      now: 'Agora',
+      am: 'AM',
+      pm: 'PM'
+    },
+    formatter: {
+      date: function (date, settings) {
+        if (!date) return '';
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        return day + '/' + month + '/' + year;
+      }
+    }
+  });
+
+  $('.datepicker-year').calendar({
+    startMode: 'year',
+    type: 'date',
+    text: {
+      days: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+      months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+      today: 'Hoje',
+      now: 'Agora',
+      am: 'AM',
+      pm: 'PM'
+    },
+    formatter: {
+      date: function (date, settings) {
+        if (!date) return '';
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        return day + '/' + month + '/' + year;
+      }
+    }
+  });
+
+  $('.ui.radio.checkbox').checkbox();
 }
 
 function show_loading() {

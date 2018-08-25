@@ -1,27 +1,28 @@
+<div class="ui black segment">
 <p>
-  <strong>Descricao:</strong>
+  <strong><%= Categoria.human_attribute_name(:descricao) %>:</strong>
   <%= @categoria.descricao %>
 </p>
 
 <p>
-  <strong>Idade minima:</strong>
+  <strong><%= Categoria.human_attribute_name(:idade_minima) %>:</strong>
   <%= @categoria.idade_minima %>
 </p>
 
 <p>
-  <strong>Idade maxima:</strong>
+  <strong><%= Categoria.human_attribute_name(:idade_maxima) %>:</strong>
   <%= @categoria.idade_maxima %>
 </p>
 
 <p>
-  <strong>Livre:</strong>
-  <%= @categoria.livre %>
+  <strong><%= Categoria.human_attribute_name(:livre) %>:</strong>
+  <%= @categoria.livre ? 'Sim' : 'Não' %>
 </p>
 
 <p>
-  <strong>Tipo categoria:</strong>
-  <%= @categoria.tipo_categoria %>
+  <strong><%= Categoria.human_attribute_name(:tipo_categoria_id) %>:</strong>
+  <%= @categoria.tipo_categoria.descricao %>
 </p>
-
-<%= link_to 'Edit', edit_categoria_path(@categoria) %> |
-<%= link_to 'Back', categorias_path %>
+</div>
+<%= link_to t('helpers.links.edit'), edit_categoria_path(@categoria), class: 'ui primary button' %>
+<%= link_to t('helpers.links.back'), categorias_url, class: 'ui button' %>

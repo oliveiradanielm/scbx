@@ -1,4 +1,4 @@
-<%= form_with(model: tipo_categoria, local: true, html: { class: 'ui form' }) do |form| %>
+<%= form_with(model: tipo_categoria, local: true, html: { class: 'ui form grey segment' }) do |form| %>
   <%= render partial: 'layouts/errors_messages', locals: { object: tipo_categoria } %>
 
   <div class="required field">
@@ -10,4 +10,6 @@
     <%= form.submit nil, class: 'ui primary button' %>
     <%= link_to t('helpers.links.back'), tipo_categorias_path, class: 'ui button right floated' %>
   </div>
+
+  <br>
 <% end %>

@@ -1,7 +1,9 @@
+<div class="ui form black segment">
 <p>
-  <strong>Descricao:</strong>
+  <strong><%= TipoCategoria.human_attribute_name(:descricao) %>:</strong>
   <%= @tipo_categoria.descricao %>
 </p>
 
-<%= link_to 'Edit', edit_tipo_categoria_path(@tipo_categoria) %> |
-<%= link_to 'Back', tipo_categorias_path %>
+</div>
+<%= link_to t('helpers.links.edit'), edit_tipo_categoria_path(@tipo_categoria), class: 'ui primary button' %>
+<%= link_to t('helpers.links.back'), tipo_categorias_path, class: 'ui button' %>
