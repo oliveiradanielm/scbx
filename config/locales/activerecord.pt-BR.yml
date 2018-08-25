@@ -4,7 +4,13 @@ pt-BR:
       post:
         one: Postagem
         other: Postagens
+      categoria: Categoria
     attributes:
       post:
         title: Título
         message: Mensagem
+      categoria:
+        idade_minima: Idade Mínima
+        idade_maxima: Idade Máxima
+        descricao: Descrição
+        tipo_categoria_id: Tipo de Categoria

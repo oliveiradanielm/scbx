@@ -29,7 +29,7 @@
       @<%= singular_table_name %> = <%= orm_class.build(class_name, "#{singular_table_name}_params") %>
   
       if @<%= orm_instance.save %>
-        redirect_to <%= redirect_resource_name %>, notice: <%= "'#{human_name} was successfully created.'" %>
+        redirect_to <%= redirect_resource_name %>, notice: t('flash.create.notice')
       else
         render :new
       end
@@ -38,7 +38,7 @@
     # PATCH/PUT <%= route_url %>/1
     def update
       if @<%= orm_instance.update("#{singular_table_name}_params") %>
-        redirect_to <%= redirect_resource_name %>, notice: <%= "'#{human_name} was successfully updated.'" %>
+        redirect_to <%= redirect_resource_name %>, notice: t('flash.update.notice')
       else
         render :edit
       end
@@ -47,7 +47,7 @@
     # DELETE <%= route_url %>/1
     def destroy
       @<%= orm_instance.destroy %>
-      redirect_to <%= index_helper %>_url, notice: <%= "'#{human_name} was successfully destroyed.'" %>
+      redirect_to <%= index_helper %>_url, notice: t('flash.destroy.notice')
     end
   
     private

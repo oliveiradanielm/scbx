@@ -24,7 +24,7 @@
       @categoria = Categoria.new(categoria_params)
   
       if @categoria.save
-        redirect_to @categoria, notice: 'Categoria was successfully created.'
+        redirect_to @categoria, notice: t('flash.create.notice')
       else
         render :new
       end
@@ -33,7 +33,7 @@
     # PATCH/PUT /categorias/1
     def update
       if @categoria.update(categoria_params)
-        redirect_to @categoria, notice: 'Categoria was successfully updated.'
+        redirect_to @categoria, notice: t('flash.update.notice')
       else
         render :edit
       end
@@ -42,7 +42,7 @@
     # DELETE /categorias/1
     def destroy
       @categoria.destroy
-      redirect_to categorias_url, notice: 'Categoria was successfully destroyed.'
+      redirect_to categorias_url, notice: t('flash.destroy.notice')
     end
   
     private

@@ -1,15 +1,15 @@
 <%= link_to t('helpers.links.new'), new_categoria_path, class: 'ui right floated mini primary button' %>
-<h1>Categorias</h1>
+<h1><%= Categoria.model_name.human.pluralize %></h1>
 
 <table class="ui striped table">
   <thead>
     <tr>
-      <th>Descricao</th>
-      <th>Idade minima</th>
-      <th>Idade maxima</th>
-      <th>Livre</th>
-      <th>Tipo categoria</th>
-      <th colspan="3"></th>
+      <th><%= Categoria.human_attribute_name(:descricao) %></th>
+      <th><%= Categoria.human_attribute_name(:idade_minima) %></th>
+      <th><%= Categoria.human_attribute_name(:idade_maxima) %></th>
+      <th><%= Categoria.human_attribute_name(:livre) %></th>
+      <th><%= Categoria.human_attribute_name(:tipo_categoria_id) %></th>
+      <th>t('helpers.links.actions')</th>
     </tr>
   </thead>
 
@@ -19,11 +19,15 @@
         <td><%= categoria.descricao %></td>
         <td><%= categoria.idade_minima %></td>
         <td><%= categoria.idade_maxima %></td>
-        <td><%= categoria.livre %></td>
-        <td><%= categoria.tipo_categoria %></td>
-        <td><%= link_to 'Show', categoria %></td>
-        <td><%= link_to 'Edit', edit_categoria_path(categoria) %></td>
-        <td><%= link_to 'Destroy', categoria, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= categoria.livre ? 'Sim' : 'Não' %></td>
+        <td><%= categoria.tipo_categoria.descricao %></td>
+        <td>
+          <div class="ui icon buttons">
+            <%= link_to(content_tag(:i, nil, class: 'info circle icon'), categoria, class: 'ui button') %>
+            <%= link_to(content_tag(:i, nil, class: 'edit outline icon'), edit_categoria_path(categoria), class: 'ui button') %>
+            <%= link_to(content_tag(:i, nil, class: 'trash alternate outline icon'), categoria, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'ui button') %>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
