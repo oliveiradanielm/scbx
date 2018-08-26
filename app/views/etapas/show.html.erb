@@ -1,0 +1,29 @@
+<div class="ui form black segment">
+<p>
+  <strong><%= Etapa.human_attribute_name(:descricao) %>:</strong>
+  <%= @etapa.descricao %>
+</p>
+
+<p>
+  <strong><%= Etapa.human_attribute_name(:data) %>:</strong>
+  <%= @etapa.data %>
+</p>
+
+<p>
+  <strong><%= Etapa.human_attribute_name(:cidade) %>:</strong>
+  <%= @etapa.cidade %>
+</p>
+
+<p>
+  <strong><%= Etapa.human_attribute_name(:uf) %>:</strong>
+  <%= @etapa.uf %>
+</p>
+
+<p>
+  <strong><%= Etapa.human_attribute_name(:campeonato) %>:</strong>
+  <%= @etapa.campeonato.try(:titulo) %>
+</p>
+
+</div>
+<%= link_to t('helpers.links.edit'), edit_campeonato_etapa_path(@campeonato, @etapa), class: 'ui primary button' %>
+<%= link_to t('helpers.links.back'), campeonato_etapas_path(@campeonato), class: 'ui button' %>

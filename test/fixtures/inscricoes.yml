@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  atleta: one
+  categoria: one
+  etapa: one
+  confirmado: false
+
+two:
+  atleta: two
+  categoria: two
+  etapa: two
+  confirmado: false

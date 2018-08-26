@@ -1,2 +1,35 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h2 class="ui dividing header">Próximos Eventos</h2>
+
+<div class="ui green segment">
+  <div class="ui special cards">
+  <% @etapas.each do |etapa| %>
+    <div class="card">
+      <div class="blurring dimmable image">
+        <div class="ui dimmer">
+          <div class="content">
+            <div class="center">
+              <a href="<%= inscricoes_path(etapa_id: etapa.id) %>" class="ui green button">Inscreva-se</a>
+            </div>
+          </div>
+        </div>
+        <%= image_tag 'evento.jpg', size: '290x290', class: 'visible content' %>
+      </div>
+      <div class="content">
+        <a class="header"><%= etapa.completo %></a>
+        <div class="meta">
+          <span class="date"><%= I18n.localize etapa.data.to_date, format: :long %></span>
+        </div>
+        <div class="description">
+          <%= etapa.campeonato.descricao %>
+        </div>
+      </div>
+      <div class="extra content">
+        <a>
+          <i class="user icon"></i>
+          22 Inscritos
+        </a>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :inscricoes
+  resources :campeonatos do
+    resources :etapas
+  end
   resources :categorias
   resources :tipo_categorias
   resources :atletas

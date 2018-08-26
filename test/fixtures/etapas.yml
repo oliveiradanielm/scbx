@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyString
+  data: MyString
+  cidade: MyString
+  uf: MyString
+  campeonato: one
+
+two:
+  descricao: MyString
+  data: MyString
+  cidade: MyString
+  uf: MyString
+  campeonato: two

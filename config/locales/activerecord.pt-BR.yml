@@ -7,6 +7,9 @@ pt-BR:
       categoria: Categoria
       atleta: Atleta
       tipo_categoria: Tipos de Categoria
+      campeonato: Camponato
+      etapa: Etapa
+      inscricao: Inscrição
     attributes:
       post:
         title: Título
@@ -35,3 +38,17 @@ pt-BR:
         cep: CEP
       tipo_categoria:
         descricao: Descrição
+      campeonato:
+        titulo: Título
+        descricao: Descrição
+        qtd_etapa: Qtd de Etapas
+      etapa:
+        descricao: Descrição
+        data: Data
+        campeonato_id: Campeonato
+        uf: UF
+      inscricao:
+        atleta_id: Atleta
+        categoria_id: Categoria
+        etapa_id: Etapa
+        confirmado: Confirmado

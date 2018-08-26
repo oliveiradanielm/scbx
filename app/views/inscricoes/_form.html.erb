@@ -1,0 +1,30 @@
+<%= form_with(model: inscricao, local: true, html: { class: 'ui form grey segment' }) do |form| %>
+  <%= render partial: 'layouts/errors_messages', locals: { object: inscricao } %>
+
+  <div class="required field">
+    <%= form.label :atleta_id %>
+    <%= form.select :atleta_id, Atleta.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
+  </div>
+
+  <div class="required field">
+    <%= form.label :categoria_id %>
+    <%= form.select :categoria_id, Categoria.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
+  </div>
+
+  <div class="required field">
+    <%= form.label :etapa_id %>
+    <%= form.select :etapa_id, Etapa.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
+  </div>
+
+  <div class="required field">
+    <%= form.label :confirmado %>
+    <%= form.check_box :confirmado %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit nil, class: 'ui primary button' %>
+    <%= link_to t('helpers.links.back'), inscricoes_path, class: 'ui button right floated' %>
+  </div>
+
+  <br>
+<% end %>

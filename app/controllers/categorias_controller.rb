@@ -3,7 +3,7 @@
   
     # GET /categorias
     def index
-      @categorias = Categoria.all
+      @categorias = Categoria.includes(:tipo_categoria).order(:idade_minima)
     end
   
     # GET /categorias/1
@@ -53,7 +53,7 @@
   
       # Only allow a trusted parameter "white list" through.
       def categoria_params
-        params.require(:categoria).permit(:descricao, :idade_minima, :idade_maxima, :livre, :tipo_categoria_id)
+        params.require(:categoria).permit(:descricao, :idade_minima, :idade_maxima, :livre, :tipo_categoria_id, :genero, :oficial)
       end
   end
   

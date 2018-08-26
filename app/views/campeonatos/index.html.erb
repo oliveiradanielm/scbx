@@ -1,0 +1,41 @@
+<%= link_to t('helpers.links.new'), new_campeonato_path, class: 'ui right floated mini primary button' %>
+<h2><%= Campeonato.model_name.human.pluralize %></h2>
+
+<div class="ui teal segment">
+<table class="ui striped table">
+  <thead>
+    <tr>
+      <th><%= Campeonato.human_attribute_name(:titulo) %></th>
+      <th><%= Campeonato.human_attribute_name(:descricao) %></th>
+      <th><%= Campeonato.human_attribute_name(:qtd_etapa) %></th>
+      <th class="right aligned"><%= t('helpers.links.actions') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @campeonatos.each do |campeonato| %>
+      <tr>
+        <td><%= campeonato.titulo %></td>
+        <td><%= campeonato.descricao %></td>
+        <td><%= campeonato.etapas.size %></td>
+
+        <td class="right aligned">
+          <div class="ui icon buttons">
+            <%= link_to(content_tag(:i, nil, class: 'calendar alternate icon'), campeonato_etapas_path(campeonato), class: 'ui button', data: {tooltip: 'Etapas', inverted: ''}) %>
+            <%= link_to(content_tag(:i, nil, class: 'info circle icon'), campeonato, class: 'ui button', data: {tooltip: t('helpers.links.show'), inverted: ''}) %>
+            <%= link_to content_tag(:i, nil, class: 'edit outline icon'), edit_campeonato_path(campeonato), class: 'ui button', data: {tooltip: t('helpers.links.edit'), inverted: ''} %>
+            <%= link_to content_tag(:i, nil, class: 'trash alternate outline icon'), campeonato, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'ui button', data: {tooltip: t('helpers.links.destroy'), inverted: ''} %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="ui borderless menu">
+  <div class="right menu">
+    <p class="item">Registros: <%= @campeonatos.size %></p>
+  </div>
+</div>
+<br>
+
+</div>

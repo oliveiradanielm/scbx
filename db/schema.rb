@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_25_201749) do
+ActiveRecord::Schema.define(version: 2018_08_25_235034) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -85,6 +85,14 @@ ActiveRecord::Schema.define(version: 2018_08_25_201749) do
     t.index ["user_id", "user_type"], name: "user_index"
   end
 
+  create_table "campeonatos", force: :cascade do |t|
+    t.string "titulo"
+    t.string "descricao"
+    t.integer "qtd_etapa"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categorias", force: :cascade do |t|
     t.string "descricao"
     t.integer "idade_minima"
@@ -93,7 +101,32 @@ ActiveRecord::Schema.define(version: 2018_08_25_201749) do
     t.integer "tipo_categoria_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "genero"
+    t.boolean "oficial"
     t.index ["tipo_categoria_id"], name: "index_categorias_on_tipo_categoria_id"
+  end
+
+  create_table "etapas", force: :cascade do |t|
+    t.string "descricao"
+    t.string "data"
+    t.string "cidade"
+    t.string "uf"
+    t.integer "campeonato_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campeonato_id"], name: "index_etapas_on_campeonato_id"
+  end
+
+  create_table "inscricoes", force: :cascade do |t|
+    t.integer "atleta_id"
+    t.integer "categoria_id"
+    t.integer "etapa_id"
+    t.boolean "confirmado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["atleta_id"], name: "index_inscricoes_on_atleta_id"
+    t.index ["categoria_id"], name: "index_inscricoes_on_categoria_id"
+    t.index ["etapa_id"], name: "index_inscricoes_on_etapa_id"
   end
 
   create_table "posts", force: :cascade do |t|

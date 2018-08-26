@@ -25,16 +25,20 @@
 
         <td>
           <div class="ui icon buttons">
-            <%= link_to(content_tag(:i, nil, class: 'info circle icon'), categoria, class: 'ui button') %>
-            <%= link_to content_tag(:i, nil, class: 'edit outline icon'), edit_categoria_path(categoria), class: 'ui button' %>
-            <%= link_to content_tag(:i, nil, class: 'trash alternate outline icon'), categoria, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'ui button' %>
+            <%= link_to(content_tag(:i, nil, class: 'info circle icon'), categoria, class: 'ui button', data: {tooltip: t('helpers.links.show'), inverted: ''}) %>
+            <%= link_to content_tag(:i, nil, class: 'edit outline icon'), edit_categoria_path(categoria), class: 'ui button', data: {tooltip: t('helpers.links.edit'), inverted: ''} %>
+            <%= link_to content_tag(:i, nil, class: 'trash alternate outline icon'), categoria, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'ui button', data: {tooltip: t('helpers.links.destroy'), inverted: ''} %>
           </div>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<div class="ui borderless menu">
+  <div class="right menu">
+    <p class="item">Registros: <%= @categorias.size %></p>
+  </div>
+</div>
 <br>
 
 </div>

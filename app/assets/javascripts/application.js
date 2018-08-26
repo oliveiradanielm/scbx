@@ -28,8 +28,6 @@ var ready = function() {
     $("h4.progress span.progress_count").html(event.detail.progress);
   });
 
-  $('select.dropdown').dropdown();
-  
   $('[type="submit"], a[data-method="post"]').click(function() {
     show_loading();
   });
@@ -41,7 +39,7 @@ var ready = function() {
     ;
   });
 
-  $('select.dropdown').dropdown();
+  $('select.dropdown').dropdown({ fullTextSearch: true });
   
   $('.datepicker').calendar({
     type: 'date',
@@ -89,6 +87,8 @@ var ready = function() {
   });
 
   $('.ui.radio.checkbox').checkbox();
+
+  $('.special.cards .image').dimmer({ on: 'hover' });
 }
 
 function show_loading() {

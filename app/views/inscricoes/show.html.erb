@@ -1,0 +1,24 @@
+<div class="ui form black segment">
+<p>
+  <strong><%= Inscricao.human_attribute_name(:atleta) %>:</strong>
+  <%= @inscricao.atleta %>
+</p>
+
+<p>
+  <strong><%= Inscricao.human_attribute_name(:categoria) %>:</strong>
+  <%= @inscricao.categoria %>
+</p>
+
+<p>
+  <strong><%= Inscricao.human_attribute_name(:etapa) %>:</strong>
+  <%= @inscricao.etapa %>
+</p>
+
+<p>
+  <strong><%= Inscricao.human_attribute_name(:confirmado) %>:</strong>
+  <%= @inscricao.confirmado %>
+</p>
+
+</div>
+<%= link_to t('helpers.links.edit'), edit_inscricao_path(@inscricao), class: 'ui primary button' %>
+<%= link_to t('helpers.links.back'), inscricoes_path, class: 'ui button' %>

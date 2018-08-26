@@ -1,0 +1,20 @@
+<%= form_with(model: campeonato, local: true, html: { class: 'ui form grey segment' }) do |form| %>
+  <%= render partial: 'layouts/errors_messages', locals: { object: campeonato } %>
+
+  <div class="required field">
+    <%= form.label :titulo %>
+    <%= form.text_field :titulo %>
+  </div>
+
+  <div class="required field">
+    <%= form.label :descricao %>
+    <%= form.text_field :descricao %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit nil, class: 'ui primary button' %>
+    <%= link_to t('helpers.links.back'), campeonatos_path, class: 'ui button right floated' %>
+  </div>
+
+  <br>
+<% end %>

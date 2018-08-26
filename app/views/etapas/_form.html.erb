@@ -1,0 +1,30 @@
+<%= form_with(model: etapa, url: :campeonato_etapas, local: true, html: { class: 'ui form grey segment' }) do |form| %>
+  <%= render partial: 'layouts/errors_messages', locals: { object: etapa } %>
+
+  <div class="required field">
+    <%= form.label :descricao %>
+    <%= form.text_field :descricao %>
+  </div>
+
+  <div class="required field datepicker">
+    <%= form.label :data %>
+    <%= form.text_field :data %>
+  </div>
+
+  <div class="required field">
+    <%= form.label :cidade %>
+    <%= form.text_field :cidade %>
+  </div>
+
+  <div class="required field">
+    <%= form.label :uf %>
+    <%= form.text_field :uf %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit nil, class: 'ui primary button' %>
+    <%= link_to t('helpers.links.back'), campeonato_etapas_path(@campeonato), class: 'ui button right floated' %>
+  </div>
+
+  <br>
+<% end %>

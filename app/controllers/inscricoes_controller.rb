@@ -1,0 +1,59 @@
+    class InscricoesController < ApplicationController
+    before_action :set_inscricao, only: [:show, :edit, :update, :destroy]
+  
+    # GET /inscricoes
+    def index
+      @inscricoes = Inscricao.all
+    end
+  
+    # GET /inscricoes/1
+    def show
+    end
+  
+    # GET /inscricoes/new
+    def new
+      @inscricao = Inscricao.new
+    end
+  
+    # GET /inscricoes/1/edit
+    def edit
+    end
+  
+    # POST /inscricoes
+    def create
+      @inscricao = Inscricao.new(inscricao_params)
+  
+      if @inscricao.save
+        redirect_to @inscricao, notice: t('flash.create.notice')
+      else
+        render :new
+      end
+    end
+  
+    # PATCH/PUT /inscricoes/1
+    def update
+      if @inscricao.update(inscricao_params)
+        redirect_to @inscricao, notice: t('flash.update.notice')
+      else
+        render :edit
+      end
+    end
+  
+    # DELETE /inscricoes/1
+    def destroy
+      @inscricao.destroy
+      redirect_to inscricoes_url, notice: t('flash.destroy.notice')
+    end
+  
+    private
+      # Use callbacks to share common setup or constraints between actions.
+      def set_inscricao
+        @inscricao = Inscricao.find(params[:id])
+      end
+  
+      # Only allow a trusted parameter "white list" through.
+      def inscricao_params
+        params.require(:inscricao).permit(:atleta_id, :categoria_id, :etapa_id, :confirmado)
+      end
+  end
+  

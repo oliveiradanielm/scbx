@@ -12,19 +12,18 @@
         <a class="item" href="<%= categorias_path %>">Categorias</a>
         <a class="item" href="<%= tipo_categorias_path %>">Tipos de Categorias</a>
         <div class="divider"></div>
-        <div class="header">Header Item</div>
-        <div class="item">
-          <i class="dropdown icon"></i>
-          Sub Menu
-          <div class="menu">
-            <a class="item" href="#">Link Item</a>
-            <a class="item" href="#">Link Item</a>
-          </div>
-        </div>
-        <a class="item" href="#">Link Item</a>
-
+        <div class="header">Eventos</div>
+        <a class="item" href="<%= campeonatos_path %>">Campeonatos</a>
       </div>
     </div>
+    <div class="ui simple dropdown item">
+        Gerenciar <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" href="<%= inscricoes_path %>">Inscrições</a>
+          <a class="item" href="#<%#= categorias_path %>">Baterias</a>
+          <a class="item" href="#<%#= tipo_categorias_path %>">Resultados</a>
+        </div>
+      </div>
     <div class="right menu">
       <a href="<%= request.path %>?locale=en" class="item right floated">
         <i class="us flag"></i>
