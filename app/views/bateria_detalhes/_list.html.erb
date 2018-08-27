@@ -1,0 +1,30 @@
+<table class="ui striped table">
+  <thead>
+  <tr>
+    <th><%= BateriaDetalhe.human_attribute_name(:bateria) %></th>
+    <th><%= BateriaDetalhe.human_attribute_name(:inscricao) %></th>
+    <th><%= BateriaDetalhe.human_attribute_name(:raia) %></th>
+    <th><%= BateriaDetalhe.human_attribute_name(:resultado) %></th>
+    <th class="right aligned"><%= t('helpers.links.actions') %></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @bateria.bateria_detalhes.includes(inscricao: :atleta).each_with_index do |bateria_detalhe, index| %>
+    <tr>
+      <td><%= bateria_detalhe.bateria.campeonato_detalhe.detalhes %></td>
+      <td><%= bateria_detalhe.inscricao.nome_placa %></td>
+      <td><%= bateria_detalhe.raia %></td>
+      <td><%= bateria_detalhe.resultado %></td>
+
+      <td class="right aligned">
+        <div class="ui icon buttons">
+          <%#= link_to(content_tag(:i, nil, class: 'info circle icon'), bateria_detalhe, class: 'ui button', data: {tooltip: t('helpers.links.show'), inverted: ''}) %>
+          <%#= link_to(content_tag(:i, nil, class: 'edit outline icon'), edit_bateria_detalhe_path(bateria_detalhe), class: 'ui button', data: {tooltip: t('helpers.links.edit'), inverted: ''}) %>
+          <%= link_to(content_tag(:i, nil, class: 'trash alternate outline icon'), bateria_detalhe_path(bateria_detalhe.bateria, bateria_detalhe), method: :delete, data: { confirm: 'Tem certeza que deseja excluir?', tooltip: t('helpers.links.destroy'), inverted: '' }, class: 'ui button') %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

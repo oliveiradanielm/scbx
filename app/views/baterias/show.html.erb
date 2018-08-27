@@ -1,0 +1,36 @@
+<div class="ui form black segment">
+  <p>
+    <strong><%= Bateria.human_attribute_name(:tipo_bateria) %>:</strong>
+    <%= @bateria.tipo_bateria&.descricao %>
+  </p>
+
+  <p>
+    <strong><%= Bateria.human_attribute_name(:numero) %>:</strong>
+    <%= @bateria.numero %>
+  </p>
+
+  <p>
+    <strong><%= Bateria.human_attribute_name(:campeonato_detalhe) %>:</strong>
+    <%= @bateria.campeonato_detalhe&.detalhes %>
+  </p>
+
+  <p>
+    <strong><%= Bateria.human_attribute_name(:complemento) %>:</strong>
+    <%= @bateria.complemento %>
+  </p>
+
+</div>
+
+<% unless @bateria.bateria_detalhes.size >= 8 %>
+  <h4 class="ui dividing header">Informe até 8 pilotos que irão compor esta bateria</h4>
+  <div class="ui grey segment">
+    <%= render partial: 'bateria_detalhes/form', locals: {bateria_detalhe: (@bateria_detalhe || BateriaDetalhe.new)} %>
+  </div>
+  <% else %>
+  <h4 class="ui teal dividing header">Bateria com número máximo de pilotos</h4>
+<% end %>
+
+<%= render partial: 'bateria_detalhes/list' %>
+
+<%= link_to t('helpers.links.edit'), edit_bateria_path(@bateria), class: 'ui primary button' %>
+<%= link_to t('helpers.links.back'), baterias_path, class: 'ui button' %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_25_235034) do
+ActiveRecord::Schema.define(version: 2018_08_26_232637) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -85,6 +85,39 @@ ActiveRecord::Schema.define(version: 2018_08_25_235034) do
     t.index ["user_id", "user_type"], name: "user_index"
   end
 
+  create_table "bateria_detalhes", force: :cascade do |t|
+    t.integer "bateria_id"
+    t.integer "inscricao_id"
+    t.integer "raia"
+    t.integer "resultado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bateria_id"], name: "index_bateria_detalhes_on_bateria_id"
+    t.index ["inscricao_id"], name: "index_bateria_detalhes_on_inscricao_id"
+  end
+
+  create_table "baterias", force: :cascade do |t|
+    t.integer "tipo_bateria_id"
+    t.integer "numero"
+    t.integer "campeonato_detalhe_id"
+    t.text "complemento"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campeonato_detalhe_id"], name: "index_baterias_on_campeonato_detalhe_id"
+    t.index ["tipo_bateria_id"], name: "index_baterias_on_tipo_bateria_id"
+  end
+
+  create_table "campeonato_detalhes", force: :cascade do |t|
+    t.integer "categoria_id"
+    t.integer "etapa_id"
+    t.integer "campeonato_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campeonato_id"], name: "index_campeonato_detalhes_on_campeonato_id"
+    t.index ["categoria_id"], name: "index_campeonato_detalhes_on_categoria_id"
+    t.index ["etapa_id"], name: "index_campeonato_detalhes_on_etapa_id"
+  end
+
   create_table "campeonatos", force: :cascade do |t|
     t.string "titulo"
     t.string "descricao"
@@ -124,14 +157,15 @@ ActiveRecord::Schema.define(version: 2018_08_25_235034) do
     t.boolean "confirmado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "placa"
+    t.datetime "deleted_at"
     t.index ["atleta_id"], name: "index_inscricoes_on_atleta_id"
     t.index ["categoria_id"], name: "index_inscricoes_on_categoria_id"
     t.index ["etapa_id"], name: "index_inscricoes_on_etapa_id"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.string "message"
+  create_table "tipo_baterias", force: :cascade do |t|
+    t.string "descricao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

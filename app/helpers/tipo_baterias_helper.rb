@@ -1,0 +1,2 @@
+module TipoBateriasHelper
+end

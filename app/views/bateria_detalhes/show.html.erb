@@ -1,0 +1,24 @@
+<div class="ui form black segment">
+<p>
+  <strong><%= BateriaDetalhe.human_attribute_name(:bateria) %>:</strong>
+  <%= @bateria_detalhe.bateria %>
+</p>
+
+<p>
+  <strong><%= BateriaDetalhe.human_attribute_name(:inscricao) %>:</strong>
+  <%= @bateria_detalhe.inscricao %>
+</p>
+
+<p>
+  <strong><%= BateriaDetalhe.human_attribute_name(:raia) %>:</strong>
+  <%= @bateria_detalhe.raia %>
+</p>
+
+<p>
+  <strong><%= BateriaDetalhe.human_attribute_name(:resultado) %>:</strong>
+  <%= @bateria_detalhe.resultado %>
+</p>
+
+</div>
+<%= link_to t('helpers.links.edit'), edit_bateria_detalhe_path(@bateria_detalhe), class: 'ui primary button' %>
+<%= link_to t('helpers.links.back'), bateria_detalhes_path, class: 'ui button' %>

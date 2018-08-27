@@ -10,6 +10,10 @@ pt-BR:
       campeonato: Camponato
       etapa: Etapa
       inscricao: Inscrição
+      tipo_bateria: Tipos de Bateria
+      bateria_detalhe: Detalhes da Bateria
+      campeonato_detalhe: Detalhes do Campeonato
+      campeonato_detalhe: Detalhes do Campeonato
     attributes:
       post:
         title: Título
@@ -52,3 +56,16 @@ pt-BR:
         categoria_id: Categoria
         etapa_id: Etapa
         confirmado: Confirmado
+      tipo_bateria:
+        descricao: Descrição
+      bateria:
+        tipo_bateria_id: Tipo de Bateria
+        numero: Número
+        campeonato_detalhe_id: Detalhes
+      bateria_detalhe:
+        bateria_id: Bateria
+        inscricao_id: Atleta
+      campeonato_detalhe:
+        categoria_id: Categoria
+        campeonato_id: Campeonato
+        etapa_id: Etapa

@@ -21,7 +21,7 @@
 
 <p>
   <strong><%= Etapa.human_attribute_name(:campeonato) %>:</strong>
-  <%= @etapa.campeonato.try(:titulo) %>
+  <%= @etapa.campeonato&.titulo %>
 </p>
 
 </div>

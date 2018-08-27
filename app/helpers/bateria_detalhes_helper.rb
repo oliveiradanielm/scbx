@@ -1,0 +1,2 @@
+module BateriaDetalhesHelper
+end

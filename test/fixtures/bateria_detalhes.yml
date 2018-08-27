@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bateria: one
+  inscricao: one
+  raia: 1
+  resultado: 1
+
+two:
+  bateria: two
+  inscricao: two
+  raia: 1
+  resultado: 1

@@ -8,7 +8,8 @@
   
     # GET <%= route_url %>
     def index
-      @<%= plural_table_name %> = <%= orm_class.all(class_name) %>
+      @q = <%= orm_class.all(class_name) %>.ransack(params[:q])
+      @<%= plural_table_name %> = @q.result.page(params[:page])
     end
   
     # GET <%= route_url %>/1

@@ -1,22 +1,22 @@
 <div class="ui form black segment">
 <p>
   <strong><%= Inscricao.human_attribute_name(:atleta) %>:</strong>
-  <%= @inscricao.atleta %>
+  <%= @inscricao.atleta.nome %>
 </p>
 
 <p>
   <strong><%= Inscricao.human_attribute_name(:categoria) %>:</strong>
-  <%= @inscricao.categoria %>
+  <%= @inscricao.categoria.descricao %>
 </p>
 
 <p>
   <strong><%= Inscricao.human_attribute_name(:etapa) %>:</strong>
-  <%= @inscricao.etapa %>
+  <%= @inscricao.etapa.descricao %>
 </p>
 
 <p>
   <strong><%= Inscricao.human_attribute_name(:confirmado) %>:</strong>
-  <%= @inscricao.confirmado %>
+  <%= @inscricao.confirmado ? 'Sim' : 'Não' %>
 </p>
 
 </div>

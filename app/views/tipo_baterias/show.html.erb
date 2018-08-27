@@ -1,0 +1,9 @@
+<div class="ui form black segment">
+<p>
+  <strong><%= TipoBateria.human_attribute_name(:descricao) %>:</strong>
+  <%= @tipo_bateria.descricao %>
+</p>
+
+</div>
+<%= link_to t('helpers.links.edit'), edit_tipo_bateria_path(@tipo_bateria), class: 'ui primary button' %>
+<%= link_to t('helpers.links.back'), tipo_baterias_path, class: 'ui button' %>

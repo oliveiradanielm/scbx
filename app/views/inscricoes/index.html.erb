@@ -1,38 +1,69 @@
-<%= link_to t('helpers.links.new'), new_inscricao_path, class: 'ui right floated mini primary button' %>
+<%= link_to t('helpers.links.new'), new_inscricao_path(etapa_id: params[:etapa_id]), class: 'ui right floated mini primary button' %>
 <h2><%= Inscricao.model_name.human.pluralize %></h2>
 
-<div class="ui teal segment">
-<table class="ui striped table">
-  <thead>
+  <%= search_form_for @q, html: { class: 'ui form' } do |f| %>
+    <div class="fields">
+      <div class="field">
+        <%= f.search_field :atleta_nome_cont, placeholder: 'Atleta' %>
+      </div>
+      <div class="field">
+        <%= f.search_field :placa, placeholder: 'Placa' %>
+      </div>
+      <div class="field">
+        <%= f.search_field :categoria_descricao_cont, placeholder: 'Categoria' %>
+      </div>
+      <div class="field">
+        <div class="ui action input">
+          <%= f.search_field :etapa_descricao_cont, placeholder: 'Etapa' %>
+          <button class="ui primary icon button" type="submit" data-tooltip="Pesquisar" data-inverted="">
+            <i class="search icon"></i>
+          </button>
+          <a href="<%= inscricoes_url %>" class="ui icon button" data-tooltip="Limpar" data-inverted="">
+            <i class="close icon"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+  <table class="ui teal very compact striped table">
+    <thead>
     <tr>
-      <th><%= Inscricao.human_attribute_name(:atleta) %></th>
-      <th><%= Inscricao.human_attribute_name(:categoria) %></th>
-      <th><%= Inscricao.human_attribute_name(:etapa) %></th>
-      <th><%= Inscricao.human_attribute_name(:confirmado) %></th>
+      <th><%= sort_link(@q, :atleta_nome, Inscricao.human_attribute_name(:atleta_id)) %></th>
+      <th><%= sort_link(@q, :placa, Inscricao.human_attribute_name(:placa)) %></th>
+      <th><%= sort_link(@q, :categoria_descricao, Inscricao.human_attribute_name(:categoria_id)) %></th>
+      <th><%= sort_link(@q, :etapa_descricao, Inscricao.human_attribute_name(:etapa_id)) %></th>
+      <th><%= sort_link(@q, :confirmado) %></th>
       <th class="right aligned"><%= t('helpers.links.actions') %></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @inscricoes.each do |inscricao| %>
       <tr>
-        <td><%= inscricao.atleta %></td>
-        <td><%= inscricao.categoria %></td>
-        <td><%= inscricao.etapa %></td>
-        <td><%= inscricao.confirmado %></td>
+        <td><%= inscricao.atleta.nome %></td>
+        <td><%= inscricao.placa %></td>
+        <td><%= inscricao.categoria.descricao %></td>
+        <td><%= inscricao.etapa.completo %></td>
+        <% if inscricao.confirmado %>
+          <td class="positive"><i class="icon checkmark"></i><%= inscricao.confirmado ? 'Sim' : 'Não' %></td>
+        <% else %>
+          <td class="negative"><i class="icon close"></i><%= inscricao.confirmado ? 'Sim' : 'Não' %></td>
+        <% end %>
 
         <td class="right aligned">
           <div class="ui icon buttons">
+            <%= link_to(content_tag(:i, nil, class: 'dollar sign icon'), confirmar_inscricao_path(inscricao_id: inscricao), method: :post, data: {confirm: 'Tem certeza que deseja confirmar?', tooltip: 'Confirmar', inverted: ''}, class: 'ui button') unless inscricao.confirmado %>
             <%= link_to(content_tag(:i, nil, class: 'info circle icon'), inscricao, class: 'ui button', data: {tooltip: t('helpers.links.show'), inverted: ''}) %>
             <%= link_to content_tag(:i, nil, class: 'edit outline icon'), edit_inscricao_path(inscricao), class: 'ui button', data: {tooltip: t('helpers.links.edit'), inverted: ''} %>
-            <%= link_to content_tag(:i, nil, class: 'trash alternate outline icon'), inscricao, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'ui button', data: {tooltip: t('helpers.links.destroy'), inverted: ''} %>
+            <%= link_to content_tag(:i, nil, class: 'trash alternate outline icon'), inscricao, method: :delete, data: {confirm: 'Tem certeza que deseja excluir?', tooltip: t('helpers.links.destroy'), inverted: ''}, class: 'ui button' %>
           </div>
         </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-</div>

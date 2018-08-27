@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  categoria: one
+  etapa: one
+  campeonato: one
+
+two:
+  categoria: two
+  etapa: two
+  campeonato: two

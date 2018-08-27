@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo_bateria: one
+  numero: 1
+  campeonato_detalhe: one
+  complemento: MyText
+
+two:
+  tipo_bateria: two
+  numero: 1
+  campeonato_detalhe: two
+  complemento: MyText

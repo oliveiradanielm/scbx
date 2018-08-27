@@ -1,0 +1,19 @@
+<div class="ui form black segment">
+<p>
+  <strong><%= CampeonatoDetalhe.human_attribute_name(:categoria) %>:</strong>
+  <%= @campeonato_detalhe.categoria %>
+</p>
+
+<p>
+  <strong><%= CampeonatoDetalhe.human_attribute_name(:etapa) %>:</strong>
+  <%= @campeonato_detalhe.etapa %>
+</p>
+
+<p>
+  <strong><%= CampeonatoDetalhe.human_attribute_name(:campeonato) %>:</strong>
+  <%= @campeonato_detalhe.campeonato %>
+</p>
+
+</div>
+<%= link_to t('helpers.links.edit'), edit_campeonato_detalhe_path(@campeonato_detalhe), class: 'ui primary button' %>
+<%= link_to t('helpers.links.back'), campeonato_detalhes_path, class: 'ui button' %>

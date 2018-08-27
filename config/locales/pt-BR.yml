@@ -160,6 +160,7 @@ pt-BR:
       list: Listar
       destroy: Excluir
       actions: Ações
+      clear: Limpar
   flash:
     create:
       notice: "Registro criado com sucesso."

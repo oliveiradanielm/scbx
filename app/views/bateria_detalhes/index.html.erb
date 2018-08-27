@@ -1,0 +1,51 @@
+<%= link_to t('helpers.links.new'), new_bateria_detalhe_path, class: 'ui right floated mini primary button' %>
+<h2><%= BateriaDetalhe.model_name.human.pluralize %></h2>
+
+<%= search_form_for @q, html: { class: 'ui tinny form' } do |f| %>
+  <div class="fields">
+    <div class="field">
+  
+      <%= f.label :bateria_id %>
+      <%= f.search_field :bateria_id_cont %>
+  
+    </div>
+    <div class="field">
+  
+      <%= f.label :inscricao_id %>
+      <%= f.search_field :inscricao_id_cont %>
+  
+    </div>
+    <div class="field">
+  
+      <%= f.label :raia %>
+      <%= f.search_field :raia_cont %>
+  
+    </div>
+    <div class="field">
+  
+    <%= f.label :resultado %>
+      <div class="ui action input">
+        <%= f.search_field :resultado_cont %>
+        <button class="ui primary icon button" type="submit" data-tooltip="<%= t('ransack.search') %>" data-inverted="">
+          <i class="search icon"></i>
+        </button>
+        <a href="<%= bateria_detalhes_path %>" class="ui icon button" data-tooltip="<%= t('helpers.links.clear') %>" data-inverted="">
+          <i class="close icon"></i>
+        </a>
+      </div>
+  
+    </div>
+
+  </div>
+<% end %>
+
+<%= render partial: 'list' %>
+
+<div class="ui borderless menu">
+  <%= paginate @bateria_detalhes %>
+  <div class="right menu">
+    <p class="item">Registros: <%= @bateria_detalhes.size %></p>
+  </div>
+</div>
+<br>
+

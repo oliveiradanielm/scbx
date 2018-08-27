@@ -1,6 +1,5 @@
 %w(A+ B+ O+ AB+ A- B- O- AB-).each{|s| TipoSanguineo.create(descricao: s)}
 %w(Challenger Championship Promocionais).each{|c| TipoCategoria.create(descricao: c)}
-
 # CATEGORIAS CHALLENGER
 Categoria.create(descricao: 'Boys 5/6', idade_minima: 5, idade_maxima: 6, genero: 1, tipo_categoria_id: 1, oficial: true)
 Categoria.create(descricao: 'Boys 7', idade_minima: 7, idade_maxima: 7, genero: 1, tipo_categoria_id: 1, oficial: true)
@@ -43,3 +42,5 @@ Categoria.create(descricao: 'MTB Open (Aro 26”)', idade_minima: 1, idade_maxim
 Categoria.create(descricao: 'BMX Especial', idade_minima: 1, idade_maxima: 99, genero: 1, tipo_categoria_id: 3, oficial: false)
 
 20.times{ Atleta.create(nome: Faker::GameOfThrones.character, cpf: Faker::Number.number(11), data_nascimento: Faker::Date.birthday(18, 65), sexo: 1, uf: 'CE', cidade: 'Fortaleza'}
+
+TipoBateria.create([{descricao: 'Classificatória'}, {descricao: 'Oitavas'}, {descricao: 'Quartas'}, {descricao: 'Semi-Final'}, {descricao: 'Final'}])

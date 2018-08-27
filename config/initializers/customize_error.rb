@@ -14,10 +14,10 @@ ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
       html = %(<div class="field error">#{e}</div>).html_safe
     elsif form_fields.include? e.node_name
       if instance.error_message.kind_of?(Array)
-        # html = %(<div class="ui form field error">#{html_tag}<div class="ui error message"><p>#{instance.error_message.try(:first)}</p></div></div>).html_safe
+        # html = %(<div class="ui form field error">#{html_tag}<div class="ui error message"><p>#{instance.error_message&.first}</p></div></div>).html_safe
         html = %(<div class="ui form field error">#{html_tag}</div>).html_safe
       else
-        # html = %(<div class="ui form field error">#{html_tag}<div class="ui error message"><p>#{instance.error_message.try(:first)}</p></div></div>).html_safe
+        # html = %(<div class="ui form field error">#{html_tag}<div class="ui error message"><p>#{instance.error_message&.first}</p></div></div>).html_safe
         html = %(<div class="ui form field error">#{html_tag}</div>).html_safe
       end
     end

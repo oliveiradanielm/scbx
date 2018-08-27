@@ -1,21 +1,33 @@
-<%= form_with(model: inscricao, local: true, html: { class: 'ui form grey segment' }) do |form| %>
-  <%= render partial: 'layouts/errors_messages', locals: { object: inscricao } %>
+<%= form_with(model: inscricao, local: true, html: {class: 'ui form grey segment'}) do |form| %>
+  <%= render partial: 'layouts/errors_messages', locals: {object: inscricao} %>
 
-  <div class="required field">
-    <%= form.label :atleta_id %>
-    <%= form.select :atleta_id, Atleta.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
+  <div class="two fields">
+    <div class="required twelve wide field">
+      <%= form.label :atleta_id %>
+      <%= form.select :atleta_id, Atleta.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
+    </div>
+
+    <div class="required six wide field">
+      <%= form.label :placa %>
+      <%= form.number_field :placa %>
+    </div>
   </div>
 
+  <div class="two fields">
   <div class="required field">
     <%= form.label :categoria_id %>
     <%= form.select :categoria_id, Categoria.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
   </div>
 
-  <div class="required field">
-    <%= form.label :etapa_id %>
-    <%= form.select :etapa_id, Etapa.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
+  <% if params[:etapa_id] %>
+    <%= form.hidden_field :etapa_id, value: params[:etapa_id] %>
+  <% else %>
+    <div class="required field">
+      <%= form.label :etapa_id %>
+      <%= form.select :etapa_id, Etapa.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
+    </div>
+  <% end %>
   </div>
-
   <div class="required field">
     <%= form.label :confirmado %>
     <%= form.check_box :confirmado %>

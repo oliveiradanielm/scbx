@@ -1,0 +1,73 @@
+<%= link_to t('helpers.links.new'), new_campeonato_detalhe_path, class: 'ui right floated mini primary button' %>
+<h2><%= CampeonatoDetalhe.model_name.human.pluralize %></h2>
+
+<%= search_form_for @q, html: { class: 'ui tinny form' } do |f| %>
+  <div class="fields">
+    <div class="field">
+  
+      <%= f.label :categoria_id %>
+      <%= f.search_field :categoria_id_cont %>
+  
+    </div>
+    <div class="field">
+  
+      <%= f.label :etapa_id %>
+      <%= f.search_field :etapa_id_cont %>
+  
+    </div>
+    <div class="field">
+  
+    <%= f.label :campeonato_id %>
+      <div class="ui action input">
+        <%= f.search_field :campeonato_id_cont %>
+        <button class="ui primary icon button" type="submit" data-tooltip="<%= t('ransack.search') %>" data-inverted="">
+          <i class="search icon"></i>
+        </button>
+        <a href="<%= campeonato_detalhes_path %>" class="ui icon button" data-tooltip="<%= t('helpers.links.clear') %>" data-inverted="">
+          <i class="close icon"></i>
+        </a>
+      </div>
+  
+    </div>
+
+  </div>
+<% end %>
+
+<div class="ui teal segment">
+<table class="ui striped table">
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :campeonato_detalhe, CampeonatoDetalhe.human_attribute_name(:categoria)) %></th>
+      <th><%= sort_link(@q, :campeonato_detalhe, CampeonatoDetalhe.human_attribute_name(:etapa)) %></th>
+      <th><%= sort_link(@q, :campeonato_detalhe, CampeonatoDetalhe.human_attribute_name(:campeonato)) %></th>
+      <th class="right aligned"><%= t('helpers.links.actions') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @campeonato_detalhes.each do |campeonato_detalhe| %>
+      <tr>
+        <td><%= campeonato_detalhe.categoria %></td>
+        <td><%= campeonato_detalhe.etapa %></td>
+        <td><%= campeonato_detalhe.campeonato %></td>
+
+        <td class="right aligned">
+          <div class="ui icon buttons">
+            <%= link_to(content_tag(:i, nil, class: 'info circle icon'), campeonato_detalhe, class: 'ui button', data: {tooltip: t('helpers.links.show'), inverted: ''}) %>
+            <%= link_to(content_tag(:i, nil, class: 'edit outline icon'), edit_campeonato_detalhe_path(campeonato_detalhe), class: 'ui button', data: {tooltip: t('helpers.links.edit'), inverted: ''}) %>
+            <%= link_to(content_tag(:i, nil, class: 'trash alternate outline icon'), campeonato_detalhe, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?', tooltip: t('helpers.links.destroy'), inverted: '' }, class: 'ui button') %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="ui borderless menu">
+  <%= paginate @campeonato_detalhes %>
+  <div class="right menu">
+    <p class="item">Registros: <%= @campeonato_detalhes.size %></p>
+  </div>
+</div>
+<br>
+
+</div>

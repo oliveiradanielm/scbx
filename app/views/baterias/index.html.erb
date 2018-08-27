@@ -1,0 +1,81 @@
+<%= link_to t('helpers.links.new'), new_bateria_path, class: 'ui right floated mini primary button' %>
+<h2><%= Bateria.model_name.human.pluralize %></h2>
+
+<%= search_form_for @q, html: { class: 'ui tinny form' } do |f| %>
+  <div class="fields">
+    <div class="field">
+  
+      <%= f.label :tipo_bateria_id %>
+      <%= f.search_field :tipo_bateria_id_cont %>
+  
+    </div>
+    <div class="field">
+  
+      <%= f.label :numero %>
+      <%= f.search_field :numero_cont %>
+  
+    </div>
+    <div class="field">
+  
+      <%= f.label :campeonato_detalhe_id %>
+      <%= f.search_field :campeonato_detalhe_id_cont %>
+  
+    </div>
+    <div class="field">
+  
+    <%= f.label :complemento %>
+      <div class="ui action input">
+        <%= f.search_field :complemento_cont %>
+        <button class="ui primary icon button" type="submit" data-tooltip="<%= t('ransack.search') %>" data-inverted="">
+          <i class="search icon"></i>
+        </button>
+        <a href="<%= baterias_path %>" class="ui icon button" data-tooltip="<%= t('helpers.links.clear') %>" data-inverted="">
+          <i class="close icon"></i>
+        </a>
+      </div>
+  
+    </div>
+
+  </div>
+<% end %>
+
+<div class="ui teal segment">
+<table class="ui striped table">
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :bateria, Bateria.human_attribute_name(:tipo_bateria_id)) %></th>
+      <th><%= sort_link(@q, :bateria, Bateria.human_attribute_name(:numero)) %></th>
+      <th><%= sort_link(@q, :bateria, Bateria.human_attribute_name(:campeonato_detalhe_id)) %></th>
+      <th><%= sort_link(@q, :bateria, Bateria.human_attribute_name(:complemento)) %></th>
+      <th class="right aligned"><%= t('helpers.links.actions') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @baterias.each do |bateria| %>
+      <tr>
+        <td><%= bateria.tipo_bateria.descricao %></td>
+        <td><%= bateria.numero %></td>
+        <td><%= bateria.campeonato_detalhe.detalhes %></td>
+        <td><%= bateria.complemento %></td>
+
+        <td class="right aligned">
+          <div class="ui icon buttons">
+            <%= link_to(content_tag(:i, nil, class: 'info circle icon'), bateria, class: 'ui button', data: {tooltip: t('helpers.links.show'), inverted: ''}) %>
+            <%= link_to(content_tag(:i, nil, class: 'edit outline icon'), edit_bateria_path(bateria), class: 'ui button', data: {tooltip: t('helpers.links.edit'), inverted: ''}) %>
+            <%= link_to(content_tag(:i, nil, class: 'trash alternate outline icon'), bateria, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?', tooltip: t('helpers.links.destroy'), inverted: '' }, class: 'ui button') %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="ui borderless menu">
+  <%= paginate @baterias %>
+  <div class="right menu">
+    <p class="item">Registros: <%= @baterias.size %></p>
+  </div>
+</div>
+<br>
+
+</div>

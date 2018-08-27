@@ -1,0 +1,33 @@
+<%= form_with(model: bateria, local: true, html: {class: 'ui form grey segment'}) do |form| %>
+  <%= render partial: 'layouts/errors_messages', locals: {object: bateria} %>
+
+  <div class="required field">
+    <%= form.label :campeonato_detalhe_id %>
+    <%= form.select :campeonato_detalhe_id, CampeonatoDetalhe.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
+  </div>
+
+  <div class="two fields">
+    <div class="required field">
+      <%= form.label :tipo_bateria_id %>
+      <%= form.select :tipo_bateria_id, TipoBateria.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
+    </div>
+
+    <div class="required field">
+      <%= form.label :numero %>
+      <%= form.number_field :numero %>
+    </div>
+  </div>
+
+
+  <div class="required field">
+    <%= form.label :complemento %>
+    <%= form.text_area :complemento %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit nil, class: 'ui primary button' %>
+    <%= link_to t('helpers.links.back'), baterias_path, class: 'ui button right floated' %>
+  </div>
+
+  <br>
+<% end %>

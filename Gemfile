@@ -6,8 +6,8 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use Postgresql as the database for Active Record
-# gem 'pg', '~> 0.18.1'
-gem 'sqlite3', '~> 1.3', '>= 1.3.13'
+gem 'pg', '~> 0.18.1'
+# gem 'sqlite3', '~> 1.3', '>= 1.3.13'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -42,9 +42,11 @@ gem 'devise-bootstrapped'
 gem "audited", "~> 4.7"
 gem 'paranoia'
 gem 'ransack'
+gem 'kaminari'
 gem 'money-rails', '~>1'
 gem 'wicked_pdf', '~> 1.1'
 gem 'wkhtmltopdf-binary'
+gem 'nested_form_fields'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -65,6 +67,7 @@ group :development do
   gem 'capistrano-rvm', require: false
   gem 'awesome_print'
   gem 'mini_magick'
+  gem 'bullet'
 end
 
 group :test do

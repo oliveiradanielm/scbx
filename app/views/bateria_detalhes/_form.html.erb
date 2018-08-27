@@ -1,0 +1,15 @@
+<%= form_with(model: bateria_detalhe, url: bateria_detalhes_path(@bateria), local: true, html: { class: 'ui form grey segment' }) do |form| %>
+  <%= render partial: 'layouts/errors_messages', locals: { object: bateria_detalhe } %>
+
+  <div class="required field">
+    <%= form.label :inscricao_id %>
+    <%= form.select :inscricao_id, @bateria.campeonato_detalhe.inscritos.collect{|i| [i.nome_placa, i.id]}, {}, class: 'ui search dropdown' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit nil, class: 'ui primary button' %>
+    <%#= link_to t('helpers.links.back'), bateria_detalhes_path, class: 'ui button right floated' %>
+  </div>
+
+  <br>
+<% end %>

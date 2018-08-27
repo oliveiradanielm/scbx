@@ -3,7 +3,12 @@
   
     # GET /inscricoes
     def index
-      @inscricoes = Inscricao.all
+      @q = Inscricao.ransack(params[:q])
+      if params[:etapa_id]
+        @inscricoes = @q.result.includes(:atleta, :categoria, etapa: [:campeonato]).where(etapa_id: params[:etapa_id]).order('atletas.nome').page(params[:page])
+      else
+        @inscricoes = @q.result.includes(:atleta, :categoria, etapa: [:campeonato]).page(params[:page])
+      end
     end
   
     # GET /inscricoes/1
@@ -24,7 +29,7 @@
       @inscricao = Inscricao.new(inscricao_params)
   
       if @inscricao.save
-        redirect_to @inscricao, notice: t('flash.create.notice')
+        redirect_to inscricoes_url, notice: t('flash.create.notice')
       else
         render :new
       end
@@ -33,7 +38,7 @@
     # PATCH/PUT /inscricoes/1
     def update
       if @inscricao.update(inscricao_params)
-        redirect_to @inscricao, notice: t('flash.update.notice')
+        redirect_to inscricoes_url, notice: t('flash.update.notice')
       else
         render :edit
       end
@@ -44,6 +49,16 @@
       @inscricao.destroy
       redirect_to inscricoes_url, notice: t('flash.destroy.notice')
     end
+
+    def confirmar_inscricao
+      inscricao = Inscricao.find_by(id: params[:inscricao_id])
+      if not inscricao.confirmado and inscricao.update_attribute(:confirmado, true)
+        flash[:notice] = "Inscrição confirmada com sucesso."
+      else
+        flash[:error] = "Não foi possível confirmar a inscrição."
+      end
+      redirect_to inscricoes_url
+    end
   
     private
       # Use callbacks to share common setup or constraints between actions.
@@ -53,7 +68,7 @@
   
       # Only allow a trusted parameter "white list" through.
       def inscricao_params
-        params.require(:inscricao).permit(:atleta_id, :categoria_id, :etapa_id, :confirmado)
+        params.require(:inscricao).permit(:atleta_id, :categoria_id, :etapa_id, :confirmado, :placa)
       end
   end
   

@@ -1,12 +1,36 @@
 <%%= link_to t('helpers.links.new'), new_<%= singular_route_name %>_path, class: 'ui right floated mini primary button' %>
 <h2><%%= <%= singular_route_name.camelcase %>.model_name.human.pluralize %></h2>
 
+<%%= search_form_for @q, html: { class: 'ui tinny form' } do |f| %>
+  <div class="fields">
+<% attributes.each_with_index do |attribute, index| -%>
+    <div class="field">
+  <% if attributes.size == (index + 1) %>
+    <%%= f.label :<%= attribute.column_name %> %>
+      <div class="ui action input">
+        <%%= f.search_field :<%= attribute.column_name %>_cont %>
+        <button class="ui primary icon button" type="submit" data-tooltip="<%%= t('ransack.search') %>" data-inverted="">
+          <i class="search icon"></i>
+        </button>
+        <a href="<%%= <%= plural_route_name %>_path %>" class="ui icon button" data-tooltip="<%%= t('helpers.links.clear') %>" data-inverted="">
+          <i class="close icon"></i>
+        </a>
+      </div>
+  <% else %>
+      <%%= f.label :<%= attribute.column_name %> %>
+      <%%= f.search_field :<%= attribute.column_name %>_cont %>
+  <% end %>
+    </div>
+<% end %>
+  </div>
+<%% end %>
+
 <div class="ui teal segment">
 <table class="ui striped table">
   <thead>
     <tr>
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
-      <th><%%= <%= singular_table_name.camelcase %>.human_attribute_name(:<%= attribute.name %>) %></th>
+      <th><%%= sort_link(@q, :<%= singular_table_name %>, <%= singular_table_name.camelcase %>.human_attribute_name(:<%= attribute.name %>)) %></th>
 <% end -%>
       <th class="right aligned"><%%= t('helpers.links.actions') %></th>
     </tr>
@@ -23,7 +47,7 @@
           <div class="ui icon buttons">
             <%%= link_to(content_tag(:i, nil, class: 'info circle icon'), <%= model_resource_name %>, class: 'ui button', data: {tooltip: t('helpers.links.show'), inverted: ''}) %>
             <%%= link_to(content_tag(:i, nil, class: 'edit outline icon'), edit_<%= singular_route_name %>_path(<%= singular_table_name %>), class: 'ui button', data: {tooltip: t('helpers.links.edit'), inverted: ''}) %>
-            <%%= link_to(content_tag(:i, nil, class: 'trash alternate outline icon'), <%= model_resource_name %>, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'ui button', data: {tooltip: t('helpers.links.destroy'), inverted: ''}) %>
+            <%%= link_to(content_tag(:i, nil, class: 'trash alternate outline icon'), <%= model_resource_name %>, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?', tooltip: t('helpers.links.destroy'), inverted: '' }, class: 'ui button') %>
           </div>
         </td>
       </tr>
@@ -31,6 +55,7 @@
   </tbody>
 </table>
 <div class="ui borderless menu">
+  <%%= paginate @<%= plural_table_name %> %>
   <div class="right menu">
     <p class="item">Registros: <%%= @<%= plural_table_name %>.size %></p>
   </div>

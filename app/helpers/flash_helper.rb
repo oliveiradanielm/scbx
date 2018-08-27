@@ -7,7 +7,7 @@ module FlashHelper
       next if message.blank?
       
       type = type.to_sym
-      type = :info if type == :notice
+      type = :success if type == :notice
       type = :warning  if type == :alert
       type = :error  if type == :danger
 
@@ -18,7 +18,8 @@ module FlashHelper
       close_button = content_tag(:i, nil, class: "close icon")
 
       Array(message).each do |msg|
-        text = content_tag(:div, close_button + msg, tag_options)
+        msg_fmt = content_tag(:div, msg, class: 'header')
+        text = content_tag(:div, close_button + msg_fmt, tag_options)
         flash_messages << text if msg
       end
     end
