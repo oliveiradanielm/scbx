@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2018_08_26_232637) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -86,8 +89,8 @@ ActiveRecord::Schema.define(version: 2018_08_26_232637) do
   end
 
   create_table "bateria_detalhes", force: :cascade do |t|
-    t.integer "bateria_id"
-    t.integer "inscricao_id"
+    t.bigint "bateria_id"
+    t.bigint "inscricao_id"
     t.integer "raia"
     t.integer "resultado"
     t.datetime "created_at", null: false
@@ -97,9 +100,9 @@ ActiveRecord::Schema.define(version: 2018_08_26_232637) do
   end
 
   create_table "baterias", force: :cascade do |t|
-    t.integer "tipo_bateria_id"
+    t.bigint "tipo_bateria_id"
     t.integer "numero"
-    t.integer "campeonato_detalhe_id"
+    t.bigint "campeonato_detalhe_id"
     t.text "complemento"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -108,9 +111,9 @@ ActiveRecord::Schema.define(version: 2018_08_26_232637) do
   end
 
   create_table "campeonato_detalhes", force: :cascade do |t|
-    t.integer "categoria_id"
-    t.integer "etapa_id"
-    t.integer "campeonato_id"
+    t.bigint "categoria_id"
+    t.bigint "etapa_id"
+    t.bigint "campeonato_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["campeonato_id"], name: "index_campeonato_detalhes_on_campeonato_id"
@@ -131,7 +134,7 @@ ActiveRecord::Schema.define(version: 2018_08_26_232637) do
     t.integer "idade_minima"
     t.integer "idade_maxima"
     t.boolean "livre"
-    t.integer "tipo_categoria_id"
+    t.bigint "tipo_categoria_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "genero"
@@ -144,16 +147,16 @@ ActiveRecord::Schema.define(version: 2018_08_26_232637) do
     t.string "data"
     t.string "cidade"
     t.string "uf"
-    t.integer "campeonato_id"
+    t.bigint "campeonato_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["campeonato_id"], name: "index_etapas_on_campeonato_id"
   end
 
   create_table "inscricoes", force: :cascade do |t|
-    t.integer "atleta_id"
-    t.integer "categoria_id"
-    t.integer "etapa_id"
+    t.bigint "atleta_id"
+    t.bigint "categoria_id"
+    t.bigint "etapa_id"
     t.boolean "confirmado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -162,6 +165,13 @@ ActiveRecord::Schema.define(version: 2018_08_26_232637) do
     t.index ["atleta_id"], name: "index_inscricoes_on_atleta_id"
     t.index ["categoria_id"], name: "index_inscricoes_on_categoria_id"
     t.index ["etapa_id"], name: "index_inscricoes_on_etapa_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "message"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tipo_baterias", force: :cascade do |t|
@@ -182,4 +192,16 @@ ActiveRecord::Schema.define(version: 2018_08_26_232637) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bateria_detalhes", "baterias"
+  add_foreign_key "bateria_detalhes", "inscricoes"
+  add_foreign_key "baterias", "campeonato_detalhes"
+  add_foreign_key "baterias", "tipo_baterias"
+  add_foreign_key "campeonato_detalhes", "campeonatos"
+  add_foreign_key "campeonato_detalhes", "categorias"
+  add_foreign_key "campeonato_detalhes", "etapas"
+  add_foreign_key "categorias", "tipo_categorias"
+  add_foreign_key "etapas", "campeonatos"
+  add_foreign_key "inscricoes", "atletas"
+  add_foreign_key "inscricoes", "categorias"
+  add_foreign_key "inscricoes", "etapas"
 end

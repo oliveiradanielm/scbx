@@ -2,7 +2,7 @@
 lock "~> 3.11.0"
 
 set :application, "scbx"
-set :repo_url, "git@github.com:oliveiradanielm/scbx.git"
+set :repo_url, "https://github.com/oliveiradanielm/scbx.git"
 
 set :deploy_to, "/var/www/scbx"
 
