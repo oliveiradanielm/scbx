@@ -28,6 +28,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .tasks.json
+node_modules/
 /config/database.yml
 .vscode
 .DS_Store
