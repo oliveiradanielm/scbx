@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :tipo_baterias
   resources :inscricoes
   post '/inscricoes/confirmar_inscricao', as: :confirmar_inscricao
+  get 'get_atleta' => 'inscricoes#get_atleta'
   resources :campeonatos do
     resources :etapas
   end

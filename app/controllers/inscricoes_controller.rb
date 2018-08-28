@@ -1,6 +1,6 @@
     class InscricoesController < ApplicationController
     before_action :set_inscricao, only: [:show, :edit, :update, :destroy]
-  
+
     # GET /inscricoes
     def index
       @q = Inscricao.ransack(params[:q])
@@ -58,6 +58,16 @@
         flash[:error] = "Não foi possível confirmar a inscrição."
       end
       redirect_to inscricoes_url
+    end
+
+    def get_atleta
+      @inscrito = Inscricao.find_by(id: params[:bateria_detalhe][:inscricao_id])
+      @bateria = Bateria.find_by(id: params[:bateria_id])
+      @atleta = @inscrito.atleta
+      @row = params[:row]
+      respond_to do |format|
+        format.js {  }
+      end
     end
   
     private

@@ -1,0 +1,11 @@
+  <td ><%= row.to_i+1 %></td>
+  <td ><%= select_tag 'bateria_detalhe[inscricao_id]', options_from_collection_for_select(bateria.campeonato_detalhe.inscritos, "id", "nome_placa", inscrito.id), prompt: "Selecione", class: 'ui search dropdown', data: { remote: true, url: get_atleta_path(row: row, bateria_id: bateria) } %></td>
+  <td><%= inscrito.placa %></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>

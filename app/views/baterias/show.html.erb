@@ -23,9 +23,7 @@
 
 <% unless @bateria.bateria_detalhes.size >= 8 %>
   <h4 class="ui dividing header">Informe até 8 pilotos que irão compor esta bateria</h4>
-  <div class="ui grey segment">
     <%= render partial: 'bateria_detalhes/form', locals: {bateria_detalhe: (@bateria_detalhe || BateriaDetalhe.new)} %>
-  </div>
   <% else %>
   <h4 class="ui teal dividing header">Bateria com número máximo de pilotos</h4>
 <% end %>

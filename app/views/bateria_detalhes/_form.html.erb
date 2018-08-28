@@ -1,10 +1,46 @@
-<%= form_with(model: bateria_detalhe, url: bateria_detalhes_path(@bateria), local: true, html: { class: 'ui form grey segment' }) do |form| %>
-  <%= render partial: 'layouts/errors_messages', locals: { object: bateria_detalhe } %>
+<%= form_with(model: bateria_detalhe, url: bateria_detalhes_path(@bateria), local: true, html: {class: 'ui form grey segment'}) do |form| %>
+  <%= render partial: 'layouts/errors_messages', locals: {object: bateria_detalhe} %>
 
-  <div class="required field">
-    <%= form.label :inscricao_id %>
-    <%= form.select :inscricao_id, @bateria.campeonato_detalhe.inscritos.collect{|i| [i.nome_placa, i.id]}, {}, class: 'ui search dropdown' %>
-  </div>
+    <table class="ui small celled structured table">
+      <thead>
+      <tr>
+        <th rowspan="2">Nº</th>
+        <th rowspan="2">Atleta/Placa</th>
+        <th rowspan="2">UF</th>
+        <th colspan="3">Baterias</th>
+        <th colspan="3">Classificação</th>
+        <th rowspan="2">Pontos</th>
+        <th rowspan="2">Resultado Final</th>
+      </tr>
+      <tr>
+        <th>1ª</th>
+        <th>2ª</th>
+        <th>3ª</th>
+        <th>1ª</th>
+        <th>2ª</th>
+        <th>3ª</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% 8.times do |i| %>
+        <tr id="atleta-<%= i %>">
+          <td ><%= i+1 %></td>
+          <td ><%= form.select :inscricao_id, @bateria.campeonato_detalhe.inscritos.collect {|i| [i.nome_placa, i.id]}, {prompt: '--Selecione--'}, class: 'ui search dropdown', data: { remote: true, url: get_atleta_path(row: i, bateria_id: @bateria) } %></td>
+          <td></td>
+          <td><%= raias_1[i] %></td>
+          <td><%= raias_2[i] %></td>
+          <td><%= raias_3[i] %></td>
+          <td style=""><div class="one wide field"><%= select_tag 'asd', options_for_select(raias_1), prompt: "--", class: 'ui dropdown' %></div></td>
+          <td><div class="one wide field"><%= select_tag 'asd', options_for_select(raias_1), prompt: "--", class: 'ui dropdown' %></div></td>
+          <td><div class="one wide field"><%= select_tag 'asd', options_for_select(raias_1), prompt: "--", class: 'ui dropdown' %></div></td>
+          <td></td>
+          <td></td>
+
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
 
   <div class="actions">
     <%= form.submit nil, class: 'ui primary button' %>
