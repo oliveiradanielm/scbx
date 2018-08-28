@@ -1,7 +1,7 @@
 <div class="ui inverted menu">
   <div class="ui container">
     <a href="<%= root_path %>" class="header item">
-      <img class="logo" src="/assets/logo.png">&nbsp;&nbsp;
+      <%= image_tag 'logo.png', class: "logo" %>
         SCBx
     </a>
     <a href="<%= root_path %>" class="item">Home</a>
@@ -21,8 +21,8 @@
         Gerenciar <i class="dropdown icon"></i>
         <div class="menu">
           <a class="item" href="<%= inscricoes_path %>">Inscrições</a>
-          <a class="item" href="#<%#= categorias_path %>">Baterias</a>
-          <a class="item" href="#<%#= tipo_categorias_path %>">Resultados</a>
+          <a class="item" href="<%= baterias_path %>">Baterias</a>
+<!--          <a class="item" href="#<%##= tipo_categorias_path %>">Resultados</a>-->
         </div>
       </div>
     <div class="right menu">

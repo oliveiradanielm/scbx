@@ -43,4 +43,4 @@ Categoria.create(descricao: 'BMX Especial', idade_minima: 1, idade_maxima: 99, g
 
 20.times{ Atleta.create(nome: Faker::GameOfThrones.character, cpf: Faker::Number.number(11), data_nascimento: Faker::Date.birthday(18, 65), email: Faker::Internet.email, sexo: 1, uf: 'CE', cidade: 'Fortaleza')}
 
-TipoBateria.create([{descricao: 'Classificatória'}, {descricao: 'Oitavas'}, {descricao: 'Quartas'}, {descricao: 'Semi-Final'}, {descricao: 'Final'}])
+%w(Classificatória Oitavas Quartas Semi-Final Final).each{|c| TipoBateria.create(descricao: c)}
