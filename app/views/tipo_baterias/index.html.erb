@@ -1,11 +1,12 @@
 <%= link_to t('helpers.links.new'), new_tipo_bateria_path, class: 'ui right floated mini primary button' %>
 <h2><%= TipoBateria.model_name.human.pluralize %></h2>
 
-<%= search_form_for @q, html: { class: 'ui tinny form' } do |f| %>
+<%= search_form_for @q, html: {class: 'ui tinny form'} do |f| %>
   <div class="fields">
+
     <div class="field">
-  
-    <%= f.label :descricao %>
+
+      <%= f.label :descricao %>
       <div class="ui action input">
         <%= f.search_field :descricao_cont %>
         <button class="ui primary icon button" type="submit" data-tooltip="<%= t('ransack.search') %>" data-inverted="">
@@ -15,22 +16,22 @@
           <i class="close icon"></i>
         </a>
       </div>
-  
+
     </div>
 
   </div>
 <% end %>
 
 <div class="ui teal segment">
-<table class="ui striped table">
-  <thead>
+  <table class="ui striped table">
+    <thead>
     <tr>
       <th><%= sort_link(@q, :tipo_bateria, TipoBateria.human_attribute_name(:descricao)) %></th>
       <th class="right aligned"><%= t('helpers.links.actions') %></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @tipo_baterias.each do |tipo_bateria| %>
       <tr>
         <td><%= tipo_bateria.descricao %></td>
@@ -39,19 +40,19 @@
           <div class="ui icon buttons">
             <%= link_to(content_tag(:i, nil, class: 'info circle icon'), tipo_bateria, class: 'ui button', data: {tooltip: t('helpers.links.show'), inverted: ''}) %>
             <%= link_to(content_tag(:i, nil, class: 'edit outline icon'), edit_tipo_bateria_path(tipo_bateria), class: 'ui button', data: {tooltip: t('helpers.links.edit'), inverted: ''}) %>
-            <%= link_to(content_tag(:i, nil, class: 'trash alternate outline icon'), tipo_bateria, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?', tooltip: t('helpers.links.destroy'), inverted: '' }, class: 'ui button') %>
+            <%= link_to(content_tag(:i, nil, class: 'trash alternate outline icon'), tipo_bateria, method: :delete, data: {confirm: 'Tem certeza que deseja excluir?', tooltip: t('helpers.links.destroy'), inverted: ''}, class: 'ui button') %>
           </div>
         </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
-<div class="ui borderless menu">
-  <%= paginate @tipo_baterias %>
-  <div class="right menu">
-    <p class="item">Registros: <%= @tipo_baterias.size %></p>
+    </tbody>
+  </table>
+  <div class="ui borderless menu">
+    <%= paginate @tipo_baterias %>
+    <div class="right menu">
+      <p class="item">Registros: <%= @tipo_baterias.size %></p>
+    </div>
   </div>
-</div>
-<br>
+  <br>
 
 </div>

@@ -167,13 +167,6 @@ ActiveRecord::Schema.define(version: 2018_08_26_232637) do
     t.index ["etapa_id"], name: "index_inscricoes_on_etapa_id"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "message"
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "tipo_baterias", force: :cascade do |t|
     t.string "descricao"
     t.datetime "created_at", null: false

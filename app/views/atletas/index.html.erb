@@ -1,22 +1,55 @@
 <%= link_to t('helpers.links.new'), new_atleta_path, class: 'ui right floated mini primary button' %>
 <h2 class="ui dividing header"><%= Atleta.model_name.human.pluralize %></h2>
 
+<%= search_form_for @q, html: {class: 'ui tinny form'} do |f| %>
+  <div class="fields">
+
+    <div class="field">
+      <%= f.label :nome %>
+      <%= f.search_field :nome_cont %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cpf %>
+      <%= f.search_field :cpf_cont %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cidade %>
+      <%= f.search_field :cidade_cont %>
+    </div>
+
+    <div class="field">
+      <%= f.label :nome %>
+      <div class="ui action input">
+        <%= f.search_field :nome_cont %>
+        <button class="ui primary icon button" type="submit" data-tooltip="<%= t('ransack.search').capitalize %>" data-inverted="">
+          <i class="search icon"></i>
+        </button>
+        <a href="<%= atletas_path %>" class="ui icon button" data-tooltip="<%= t('helpers.links.clear') %>" data-inverted="">
+          <i class="close icon"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <div class="ui teal segment">
-<table class="ui striped table">
-  <thead>
+  <table class="ui striped table">
+    <thead>
     <tr>
-      <th><%= Atleta.human_attribute_name(:nome) %></th>
-      <th><%= Atleta.human_attribute_name(:data_nascimento) %></th>
-      <th><%= Atleta.human_attribute_name(:cpf) %></th>
-      <th><%= Atleta.human_attribute_name(:email) %></th>
-      <th><%= Atleta.human_attribute_name(:cidade) %></th>
-      <th><%= Atleta.human_attribute_name(:uf) %></th>
+      <th><%= sort_link(@q, :nome, Atleta.human_attribute_name(:nome)) %></th>
+      <th><%= sort_link(@q, :data_nascimento, Atleta.human_attribute_name(:data_nascimento)) %></th>
+      <th><%= sort_link(@q, :cpf, Atleta.human_attribute_name(:cpf)) %></th>
+      <th><%= sort_link(@q, :email, Atleta.human_attribute_name(:email)) %></th>
+      <th><%= sort_link(@q, :cidade, Atleta.human_attribute_name(:cidade)) %></th>
+      <th><%= sort_link(@q, :uf, Atleta.human_attribute_name(:uf)) %></th>
       <th><%= t('helpers.links.actions') %></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
-    <% @atletas.each do |atleta| %>
+    <tbody>
+    <% @atletas&.each do |atleta| %>
       <tr>
         <td><%= atleta.nome %></td>
         <td><%= atleta.data_nascimento&.strftime('%d/%m/%Y') %></td>
@@ -28,18 +61,18 @@
           <div class="ui icon buttons">
             <%= link_to(content_tag(:i, nil, class: 'info circle icon'), atleta, class: 'ui button', data: {tooltip: t('helpers.links.show'), inverted: ''}) %>
             <%= link_to(content_tag(:i, nil, class: 'edit outline icon'), edit_atleta_path(atleta), class: 'ui button', data: {tooltip: t('helpers.links.edit'), inverted: ''}) %>
-            <%= link_to(content_tag(:i, nil, class: 'trash alternate outline icon'), atleta, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?', tooltip: t('helpers.links.destroy'), inverted: '' }, class: 'ui button') %>
+            <%= link_to(content_tag(:i, nil, class: 'trash alternate outline icon'), atleta, method: :delete, data: {confirm: 'Tem certeza que deseja excluir?', tooltip: t('helpers.links.destroy'), inverted: ''}, class: 'ui button') %>
           </div>
         </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
-<div class="ui borderless menu">
-  <div class="right menu">
-    <p class="item">Registros: <%= @atletas.size %></p>
+    </tbody>
+  </table>
+  <div class="ui borderless menu">
+    <div class="right menu">
+      <p class="item">Registros: <%= @atletas&.size %></p>
+    </div>
   </div>
-</div>
-<br>
+  <br>
 
 </div>
