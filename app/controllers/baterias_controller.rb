@@ -26,7 +26,7 @@
       @bateria = Bateria.new(bateria_params)
   
       if @bateria.save
-        redirect_to @bateria, notice: t('flash.create.notice')
+        redirect_to campeonato_etapa_path(@bateria.campeonato_detalhe.campeonato, @bateria.campeonato_detalhe.etapa), notice: t('flash.create.notice')
       else
         render :new
       end
@@ -35,7 +35,7 @@
     # PATCH/PUT /baterias/1
     def update
       if @bateria.update(bateria_params)
-        redirect_to @bateria, notice: t('flash.update.notice')
+        redirect_to @bateria.campeonato_detalhe.etapa, notice: t('flash.update.notice')
       else
         render :edit
       end
@@ -43,8 +43,9 @@
   
     # DELETE /baterias/1
     def destroy
+      @etapa = @bateria.campeonato_detalhe.etapa
       @bateria.destroy
-      redirect_to baterias_url, notice: t('flash.destroy.notice')
+      redirect_to @etapa, notice: t('flash.destroy.notice')
     end
   
     private

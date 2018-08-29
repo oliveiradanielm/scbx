@@ -1,1 +1,4 @@
-alert('Resultado gravado com sucesso.')
+//msg = '<%##= @msg %>'
+//alert(msg)
+$('#list-atleta-<%= @bateria_detalhe.id %>-<%= @row %>').html("<%= j render partial: 'bateria_detalhes/linha_atleta_resultado', locals: { d: @bateria_detalhe, row: @row } %>")
+ready()
