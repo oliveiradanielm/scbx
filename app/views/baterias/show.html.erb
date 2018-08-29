@@ -1,34 +1,42 @@
-<div class="ui form black segment">
-  <p>
-    <strong><%= Bateria.human_attribute_name(:tipo_bateria) %>:</strong>
-    <%= @bateria.tipo_bateria&.descricao %>
-  </p>
+<table class="ui small celled structured table">
+  <thead>
+  <tr>
+    <th rowspan="2">Nº</th>
+    <th rowspan="2">Atleta/Placa</th>
+    <th rowspan="2">UF</th>
+    <th colspan="3">Baterias</th>
+    <th colspan="3">Classificação</th>
+    <th rowspan="2">Pontos</th>
+    <th rowspan="2">Resultado Final</th>
+  </tr>
+  <tr>
+    <th>1ª</th>
+    <th>2ª</th>
+    <th>3ª</th>
+    <th>1ª</th>
+    <th>2ª</th>
+    <th>3ª</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @bateria.bateria_detalhes&.each_with_index do |d, i| %>
+    <tr>
+      <td ><%= i+1 %></td>
+      <td ><%= d.inscricao.nome_placa %></td>
+      <td ><%= d.inscricao.atleta.uf %></td>
+      <td ><%= d.raia_1 %></td>
+      <td ><%= d.raia_2 %></td>
+      <td ><%= d.raia_3 %></td>
+      <td style=""><div class="one wide field"><%= select_tag 'asd', options_for_select(raias_1), prompt: "--", class: 'ui dropdown' %></div></td>
+      <td><div class="one wide field"><%= select_tag 'asd', options_for_select(raias_1), prompt: "--", class: 'ui dropdown' %></div></td>
+      <td><div class="one wide field"><%= select_tag 'asd', options_for_select(raias_1), prompt: "--", class: 'ui dropdown' %></div></td>
+      <td></td>
+      <td></td>
 
-  <p>
-    <strong><%= Bateria.human_attribute_name(:numero) %>:</strong>
-    <%= @bateria.numero %>
-  </p>
-
-  <p>
-    <strong><%= Bateria.human_attribute_name(:campeonato_detalhe) %>:</strong>
-    <%= @bateria.campeonato_detalhe&.detalhes %>
-  </p>
-
-  <p>
-    <strong><%= Bateria.human_attribute_name(:complemento) %>:</strong>
-    <%= @bateria.complemento %>
-  </p>
-
-</div>
-
-<% unless @bateria.bateria_detalhes.size >= 8 %>
-  <h4 class="ui dividing header">Informe até 8 pilotos que irão compor esta bateria</h4>
-    <%= render partial: 'bateria_detalhes/form', locals: {bateria_detalhe: (@bateria_detalhe || BateriaDetalhe.new)} %>
-  <% else %>
-  <h4 class="ui teal dividing header">Bateria com número máximo de pilotos</h4>
-<% end %>
-
-<%= render partial: 'bateria_detalhes/list' %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <%= link_to t('helpers.links.edit'), edit_bateria_path(@bateria), class: 'ui primary button' %>
 <%= link_to t('helpers.links.back'), baterias_path, class: 'ui button' %>

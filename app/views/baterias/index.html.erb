@@ -43,10 +43,10 @@
 <table class="ui striped table">
   <thead>
     <tr>
-      <th><%= sort_link(@q, :bateria, Bateria.human_attribute_name(:tipo_bateria_id)) %></th>
-      <th><%= sort_link(@q, :bateria, Bateria.human_attribute_name(:numero)) %></th>
-      <th><%= sort_link(@q, :bateria, Bateria.human_attribute_name(:campeonato_detalhe_id)) %></th>
-      <th><%= sort_link(@q, :bateria, Bateria.human_attribute_name(:complemento)) %></th>
+      <th><%= sort_link(@q, :tipo_bateria_id, Bateria.human_attribute_name(:tipo_bateria_id)) %></th>
+      <th><%= sort_link(@q, :numero, Bateria.human_attribute_name(:numero)) %></th>
+      <th><%= sort_link(@q, :campeonato_detalhe_id, Bateria.human_attribute_name(:campeonato_detalhe_id)) %></th>
+      <th><%= sort_link(@q, :complemento, Bateria.human_attribute_name(:complemento)) %></th>
       <th class="right aligned"><%= t('helpers.links.actions') %></th>
     </tr>
   </thead>

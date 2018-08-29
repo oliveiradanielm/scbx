@@ -1,0 +1,4 @@
+$('.ui.modal').find('.header').html('Nova Bateria')
+$('.ui.modal').find('.content').html("<%= j render partial: 'baterias/form', locals: { bateria: @bateria, modal: true } %>")
+$('.ui.modal').modal('show');
+$('select.dropdown').dropdown({ fullTextSearch: true });

@@ -61,7 +61,7 @@ pt-BR:
       bateria:
         tipo_bateria_id: Tipo de Bateria
         numero: Número
-        campeonato_detalhe_id: Detalhes
+        campeonato_detalhe_id: Etapa/Categoria
       bateria_detalhe:
         bateria_id: Bateria
         inscricao_id: Atleta
@@ -69,3 +69,4 @@ pt-BR:
         categoria_id: Categoria
         campeonato_id: Campeonato
         etapa_id: Etapa
+        ordem: Ordem Execução

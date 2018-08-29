@@ -1,11 +1,13 @@
-<%= form_with(model: bateria, local: true, html: {class: 'ui form grey segment'}) do |form| %>
+<%= form_with(model: bateria, local: true, remote: modal, html: {class: 'ui form grey segment'}) do |form| %>
   <%= render partial: 'layouts/errors_messages', locals: {object: bateria} %>
-
-  <div class="required field">
-    <%= form.label :campeonato_detalhe_id %>
-    <%= form.select :campeonato_detalhe_id, CampeonatoDetalhe.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
-  </div>
-
+  <% unless bateria.campeonato_detalhe_id.present? %>
+    <div class="required field">
+      <%= form.label :campeonato_detalhe_id %>
+      <%= form.select :campeonato_detalhe_id, CampeonatoDetalhe.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :campeonato_detalhe_id, value: params[:campeonato_detalhe_id] %>
+  <% end %>
   <div class="two fields">
     <div class="required field">
       <%= form.label :tipo_bateria_id %>
@@ -18,12 +20,51 @@
     </div>
   </div>
 
-
   <div class="required field">
     <%= form.label :complemento %>
-    <%= form.text_area :complemento %>
+    <%= form.text_field :complemento %>
   </div>
+  <%= form.fields_for :bateria_detalhes do |ff| %>
+    <table class="ui blue very compact celled striped structured table">
+      <thead>
+      <tr>
+        <th rowspan="2">Nº</th>
+        <th rowspan="2">Atleta/Placa</th>
+        <th rowspan="2">UF</th>
+        <th colspan="3">Baterias</th>
+        <th colspan="3">Classificação</th>
+        <th rowspan="2">Pontos</th>
+        <th rowspan="2">Resultado Final</th>
+      </tr>
+      <tr>
+        <th>1ª</th>
+        <th>2ª</th>
+        <th>3ª</th>
+        <th>1ª</th>
+        <th>2ª</th>
+        <th>3ª</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% 8.times do |i| %>
+        <tr id="atleta-<%= i %>">
+          <td><%= i + 1 %></td>
+          <td><%= form.select :inscricao_id, bateria.campeonato_detalhe.inscritos.collect {|i| [i.nome_placa, i.id]}, {prompt: '--Selecione--'}, class: 'ui search dropdown', data: {remote: true, url: get_atleta_path(row: i, campeonato_detalhe_id: bateria.campeonato_detalhe_id)} %></td>
+          <td></td>
+          <td><%= raias_1[i] %></td>
+          <td><%= raias_2[i] %></td>
+          <td><%= raias_3[i] %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
 
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
   <div class="actions">
     <%= form.submit nil, class: 'ui primary button' %>
     <%= link_to t('helpers.links.back'), baterias_path, class: 'ui button right floated' %>

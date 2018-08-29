@@ -30,7 +30,7 @@
   <thead>
     <tr>
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
-      <th><%%= sort_link(@q, :<%= singular_table_name %>, <%= singular_table_name.camelcase %>.human_attribute_name(:<%= attribute.name %>)) %></th>
+      <th><%%= sort_link(@q, :<%= attribute.name %>, <%= singular_table_name.camelcase %>.human_attribute_name(:<%= attribute.name %>)) %></th>
 <% end -%>
       <th class="right aligned"><%%= t('helpers.links.actions') %></th>
     </tr>

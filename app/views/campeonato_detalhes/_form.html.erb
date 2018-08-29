@@ -1,19 +1,10 @@
 <%= form_with(model: campeonato_detalhe, local: true, html: { class: 'ui form grey segment' }) do |form| %>
   <%= render partial: 'layouts/errors_messages', locals: { object: campeonato_detalhe } %>
 
-  <div class="required field">
-    <%= form.label :categoria_id %>
-    <%= form.text_field :categoria_id %>
-  </div>
-
-  <div class="required field">
-    <%= form.label :etapa_id %>
-    <%= form.text_field :etapa_id %>
-  </div>
-
-  <div class="required field">
-    <%= form.label :campeonato_id %>
-    <%= form.text_field :campeonato_id %>
+  <h4 class="ui dividing header"><%= campeonato_detalhe.detalhes %></h4>
+  <div class="required two wide field">
+    <%= form.label :ordem %>
+    <%= form.text_field :ordem %>
   </div>
 
   <div class="actions">

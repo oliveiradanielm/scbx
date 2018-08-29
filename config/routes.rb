@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :baterias do
-    resources :bateria_detalhes, as: :detalhes
+    resources :bateria_detalhes, as: :detalhes do
+    end
   end
+  post 'set_resultado' => 'bateria_detalhes#set_resultado'
   resources :campeonato_detalhes
   resources :tipo_baterias
   resources :inscricoes

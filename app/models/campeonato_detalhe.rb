@@ -8,7 +8,7 @@ class CampeonatoDetalhe < ApplicationRecord
   validates_uniqueness_of :categoria_id, scope: [:etapa_id, :campeonato], message: 'já registrada para esta etapa.'
 
   def self.to_dropdown
-    CampeonatoDetalhe.all.collect{|a| [a.detalhes, a.id]}
+    CampeonatoDetalhe.includes(:campeonato, :etapa, :categoria).collect{|a| [a.detalhes, a.id]}
   end
 
   def detalhes

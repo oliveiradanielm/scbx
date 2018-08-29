@@ -42,7 +42,7 @@
   <tbody>
   <% @inscricoes.each do |inscricao| %>
     <tr>
-      <td><%= inscricao.atleta.nome %></td>
+      <td><%= inscricao.atleta&.nome %></td>
       <td><%= inscricao.placa %></td>
       <td><%= inscricao.categoria.descricao %></td>
       <td><%= inscricao.etapa.completo %></td>

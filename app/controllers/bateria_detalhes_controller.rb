@@ -45,6 +45,18 @@
       @bateria_detalhe.destroy
       redirect_to @bateria, notice: t('flash.destroy.notice')
     end
+
+    def set_resultado
+      @bateria_detalhe = BateriaDetalhe.find_by(id: params[:bateria_detalhe_id])
+      @bateria_detalhe.resultado_1 = params[:resultado_1]
+      @bateria_detalhe.pontos = @bateria_detalhe.resultado_1.to_i + @bateria_detalhe.resultado_2.to_i + @bateria_detalhe.resultado_3.to_i
+      if @bateria_detalhe.save
+
+      else
+
+      end
+      @row = params[:row]
+    end
   
     private
       # Use callbacks to share common setup or constraints between actions.
@@ -58,7 +70,7 @@
   
       # Only allow a trusted parameter "white list" through.
       def bateria_detalhe_params
-        params.require(:bateria_detalhe).permit(:bateria_id, :inscricao_id, :raia, :resultado)
+        params.require(:bateria_detalhe).permit(:bateria_id, :inscricao_id, :raia_1, :raia_2, :raia_3, :resultado_1, :resultado_2, :resultado_3, :pontos, :resultado_geral)
       end
   end
   

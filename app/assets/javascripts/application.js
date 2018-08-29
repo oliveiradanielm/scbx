@@ -89,6 +89,8 @@ var ready = function() {
   $('.ui.radio.checkbox').checkbox();
 
   $('.special.cards .image').dimmer({ on: 'hover' });
+
+  $('.ui.accordion').accordion();
 }
 
 function show_loading() {

@@ -4,7 +4,7 @@
     # GET /baterias
     def index
       @q = Bateria.all.ransack(params[:q])
-      @baterias = @q.result.includes(:tipo_bateria, campeonato_detalhe: [:categoria, :campeonato, :etapa]).page(params[:page])
+      @baterias = @q.result.includes(:tipo_bateria, campeonato_detalhe: [:campeonato, :etapa, :categoria]).page(params[:page])
     end
   
     # GET /baterias/1
@@ -13,7 +13,8 @@
   
     # GET /baterias/new
     def new
-      @bateria = Bateria.new
+      @bateria = Bateria.new(campeonato_detalhe_id: params[:campeonato_detalhe_id])
+      @bateria.bateria_detalhes.build
     end
   
     # GET /baterias/1/edit
@@ -54,7 +55,7 @@
   
       # Only allow a trusted parameter "white list" through.
       def bateria_params
-        params.require(:bateria).permit(:tipo_bateria_id, :numero, :campeonato_detalhe_id, :complemento)
+        params.require(:bateria).permit(:tipo_bateria_id, :numero, :campeonato_detalhe_id, :complemento, bateria_detalhes_attributes: [:id, :inscricao_id, :raia_1, :raia_2, :raia_3, :_destroy])
       end
   end
   

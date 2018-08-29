@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_203559) do
+ActiveRecord::Schema.define(version: 2018_08_29_052122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2018_08_28_203559) do
     t.string "resultado_2"
     t.integer "resultado_3"
     t.integer "resultado_geral"
+    t.integer "pontos"
     t.index ["bateria_id"], name: "index_bateria_detalhes_on_bateria_id"
     t.index ["inscricao_id"], name: "index_bateria_detalhes_on_inscricao_id"
   end
@@ -121,6 +122,7 @@ ActiveRecord::Schema.define(version: 2018_08_28_203559) do
     t.bigint "campeonato_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ordem"
     t.index ["campeonato_id"], name: "index_campeonato_detalhes_on_campeonato_id"
     t.index ["categoria_id"], name: "index_campeonato_detalhes_on_categoria_id"
     t.index ["etapa_id"], name: "index_campeonato_detalhes_on_etapa_id"
@@ -170,6 +172,13 @@ ActiveRecord::Schema.define(version: 2018_08_28_203559) do
     t.index ["atleta_id"], name: "index_inscricoes_on_atleta_id"
     t.index ["categoria_id"], name: "index_inscricoes_on_categoria_id"
     t.index ["etapa_id"], name: "index_inscricoes_on_etapa_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "message"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tipo_baterias", force: :cascade do |t|

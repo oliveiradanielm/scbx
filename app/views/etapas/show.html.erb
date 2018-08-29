@@ -1,29 +1,22 @@
-<div class="ui form black segment">
-<p>
-  <strong><%= Etapa.human_attribute_name(:descricao) %>:</strong>
-  <%= @etapa.descricao %>
-</p>
-
-<p>
-  <strong><%= Etapa.human_attribute_name(:data) %>:</strong>
-  <%= @etapa.data %>
-</p>
-
-<p>
-  <strong><%= Etapa.human_attribute_name(:cidade) %>:</strong>
-  <%= @etapa.cidade %>
-</p>
-
-<p>
-  <strong><%= Etapa.human_attribute_name(:uf) %>:</strong>
-  <%= @etapa.uf %>
-</p>
-
-<p>
-  <strong><%= Etapa.human_attribute_name(:campeonato) %>:</strong>
-  <%= @etapa.campeonato&.titulo %>
-</p>
-
+<h3 class="ui dividing header">Etapa: <%= "#{@etapa.campeonato.titulo} - #{@etapa.descricao} - #{@etapa.cidade}/#{@etapa.uf} - #{@etapa.data}" %></h3>
+<div class="ui styled fluid accordion">
+  <% @etapa.campeonato_detalhes.includes(:categoria, :baterias).order(:ordem)&.each do |c| %>
+    <div class="title">
+      <i class="dropdown icon"></i>
+      <%= c.categoria.descricao %>
+    </div>
+    <div class="content">
+      <p class="transition hidden">
+        <%= link_to('Criar Bateria', new_bateria_path(campeonato_detalhe_id: c), remote: true, class: 'ui primary button') %>
+        <table class="ui small table">
+        <% c.baterias&.each do |bateria| %>
+          <%= render partial: 'baterias/bateria_completa', locals: { bateria: bateria } %>
+        <% end %>
+        </table>
+      </p>
+    </div>
+  <% end %>
 </div>
+<br>
 <%= link_to t('helpers.links.edit'), edit_campeonato_etapa_path(@campeonato, @etapa), class: 'ui primary button' %>
 <%= link_to t('helpers.links.back'), campeonato_etapas_path(@campeonato), class: 'ui button' %>
