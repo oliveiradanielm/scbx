@@ -52,8 +52,12 @@ class BateriaDetalhesController < ApplicationController
     @bateria_detalhe.resultado_2 = params[:resultado_2] if params[:resultado_2].present?
     @bateria_detalhe.resultado_3 = params[:resultado_3] if params[:resultado_3].present?
     @bateria_detalhe.pontos = @bateria_detalhe.resultado_1.to_i + @bateria_detalhe.resultado_2.to_i + @bateria_detalhe.resultado_3.to_i
-    pontos_atletas = @bateria_detalhe.bateria.bateria_detalhes.collect{|b| [b.pontos, b.id]}
+
     if @bateria_detalhe.save
+      pontos_atletas = @bateria_detalhe.bateria.bateria_detalhes.collect{|b| [b.pontos, b.id]}.reject {|k, v| k.nil?}.sort
+      pontos_atletas.each_with_index do |v, i|
+        BateriaDetalhe.find(v.last).update_attribute(:resultado_geral, i+1)
+      end
       @msg = 'Resultado informado com sucesso'
     else
       @msg = @bateria_detalhe.errors.full_messages.join(', ')

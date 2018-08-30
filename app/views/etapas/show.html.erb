@@ -3,7 +3,7 @@
   <% @etapa.campeonato_detalhes.includes(:categoria).order(:ordem)&.each do |c| %>
     <div class="title">
       <i class="dropdown icon"></i>
-      <%= c.categoria.descricao %>
+      <%= "#{c.categoria.descricao} - #{c.inscritos.count} Pilotos" %>
     </div>
     <div class="content">
       <p class="transition hidden">
