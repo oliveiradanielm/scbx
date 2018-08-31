@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :baterias do
+    collection do
+      post 'new_fase'
+    end
     resources :bateria_detalhes, as: :detalhes do
     end
   end

@@ -54,7 +54,7 @@ class BateriaDetalhesController < ApplicationController
     @bateria_detalhe.pontos = @bateria_detalhe.resultado_1.to_i + @bateria_detalhe.resultado_2.to_i + @bateria_detalhe.resultado_3.to_i
 
     if @bateria_detalhe.save
-      pontos_atletas = @bateria_detalhe.bateria.bateria_detalhes.collect{|b| [b.pontos, b.id]}.reject {|k, v| k.nil?}.sort
+      pontos_atletas = @bateria_detalhe.bateria.bateria_detalhes.collect{|b| [b.pontos, b.resultado_3, b.id]}.reject {|k, v| k.nil?}.sort
       pontos_atletas.each_with_index do |v, i|
         BateriaDetalhe.find(v.last).update_attribute(:resultado_geral, i+1)
       end

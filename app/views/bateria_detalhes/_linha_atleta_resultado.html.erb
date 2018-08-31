@@ -9,3 +9,9 @@
 <td><div class="one wide field"><%= select_tag 'resultado_3', options_for_select(raias_1, d.resultado_3), prompt: "--", class: 'ui compact dropdown', data: { method: :post, remote: true, url: set_resultado_path(bateria_detalhe_id: d, inscrito_id: d.inscricao, row: row) } %></div></td>
 <td><%= d.pontos %></td>
 <td><%= d.resultado_geral %></td>
+<td>
+  <div class="ui toggle checkbox">
+    <input type="checkbox" name="inscritos[]" value="<%= d.id %>">
+    <label>Passou</label>
+  </div>
+</td>

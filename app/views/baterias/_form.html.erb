@@ -1,4 +1,4 @@
-<%= form_with(model: bateria, local: true, remote: modal, html: {class: 'ui form grey segment'}) do |form| %>
+<%= form_with(model: bateria, remote: modal, html: {class: 'ui form grey segment'}) do |form| %>
   <%= render partial: 'layouts/errors_messages', locals: {object: bateria} %>
   <% unless bateria.campeonato_detalhe_id.present? %>
     <div class="required field">
@@ -6,7 +6,7 @@
       <%= form.select :campeonato_detalhe_id, CampeonatoDetalhe.to_dropdown, {prompt: 'Selecione'}, class: 'ui search dropdown' %>
     </div>
   <% else %>
-    <%= form.hidden_field :campeonato_detalhe_id, value: params[:campeonato_detalhe_id] %>
+    <%= form.hidden_field :campeonato_detalhe_id, value: (bateria.campeonato_detalhe_id || params[:campeonato_detalhe_id]) %>
   <% end %>
   <div class="two fields">
     <div class="required field">

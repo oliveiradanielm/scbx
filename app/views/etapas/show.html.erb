@@ -8,11 +8,29 @@
     <div class="content">
       <p class="transition hidden">
         <%= link_to('Criar Bateria', new_bateria_path(campeonato_detalhe_id: c), remote: true, class: 'ui primary button') %>
-        <table class="ui small table">
-        <% c.baterias.includes(:tipo_bateria)&.each do |bateria| %>
-          <%= render partial: 'baterias/bateria_completa', locals: { bateria: bateria } %>
+      <table class="ui small table">
+        <%= form_tag(new_fase_baterias_path) do -%>
+          <%= hidden_field_tag 'campeonato_detalhe_id', c.id %>
+          <% c.baterias.includes(:tipo_bateria)&.each do |bateria| %>
+            <%= render partial: 'baterias/bateria_completa', locals: {bateria: bateria} %>
+          <% end -%>
+          <div class="ui form">
+            <div class="fields">
+              <div class="field">
+                <%= select_tag 'tipo_bateria_id', options_from_collection_for_select(TipoBateria.all, "id", "descricao"), class: 'ui dropdown' %>
+              </div>
+              <div class="field">
+                <div class="ui action input">
+                  <input type="text" placeholder="Nº">
+                  <button class="ui button" type="submit">Nova Fase</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <br>
         <% end %>
-        </table>
+      </table>
       </p>
     </div>
   <% end %>

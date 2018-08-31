@@ -1,6 +1,6 @@
 class BateriasController < ApplicationController
   before_action :set_bateria, only: [:show, :edit, :update, :destroy]
-
+  respond_to :html, :js
   # GET /baterias
   def index
     @q = Bateria.all.ransack(params[:q])
@@ -26,8 +26,9 @@ class BateriasController < ApplicationController
     @bateria = Bateria.new(bateria_params)
     respond_to do |format|
       if @bateria.save
-        redirect_to campeonato_etapa_path(@bateria.campeonato_detalhe.campeonato, @bateria.campeonato_detalhe.etapa), notice: t('flash.create.notice')
+        format.html {redirect_to campeonato_etapa_path(@bateria.campeonato_detalhe.campeonato, @bateria.campeonato_detalhe.etapa), notice: t('flash.create.notice')}
       else
+        @bateria.bateria_detalhes.build if @bateria.bateria_detalhes.empty?
         format.js {render :new}
       end
     end
@@ -47,6 +48,25 @@ class BateriasController < ApplicationController
     @etapa = @bateria.campeonato_detalhe.etapa
     @bateria.destroy
     redirect_to @etapa, notice: t('flash.destroy.notice')
+  end
+
+  def new_fase
+    # "campeonato_detalhe_id"=>"1", "inscritos"=>["3", "4", "30", "33"], "commit"=>"Nova Fase"}
+    raias = (1..8).to_a.shuffle
+    # bateria"=>{"campeonato_detalhe_id"=>"7", "tipo_bateria_id"=>"1", "numero"=>"", "complemento"=>"sadasdas", "bateria_detalhes_attributes"=>{"0"=>{"inscricao_id"=>"28", "raia_1"=>"1", "raia_2"=>"8", "raia_3"=>"4"}}, "inscricao_id"=>""}
+    bateria_detalhes_attributes = {}
+    params[:inscritos].each_with_index do |inscrito, index|
+      bateria_detalhes_attributes.merge({index => { inscricao_id: inscrito, raia_1: raias[index] }})
+    end
+    @bateria = Bateria.new( campeonato_detalhe_id: params[:campeonato_detalhe_id], tipo_bateria_id: params[:tipo_bateria_id], complemento: params[:complemento], bateria_detalhes_attributes: bateria_detalhes_attributes )
+    @bateria
+    respond_to do |format|
+      if @bateria.save
+        format.html {redirect_to campeonato_etapa_path(@bateria.campeonato_detalhe.campeonato, @bateria.campeonato_detalhe.etapa), notice: t('flash.create.notice')}
+      else
+        format.js {render :new}
+      end
+    end
   end
 
   private

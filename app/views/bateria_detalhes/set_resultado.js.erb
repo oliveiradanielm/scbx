@@ -1,4 +1,4 @@
 //msg = '<%##= @msg %>'
 //alert(msg)
-$('#list-atleta-<%= @bateria_detalhe.id %>-<%= @row %>').html("<%= j render partial: 'bateria_detalhes/linha_atleta_resultado', locals: { d: @bateria_detalhe, row: @row } %>")
+$('#bateria-<%= @bateria_detalhe.bateria.id %>').html("<%= j render partial: 'baterias/bateria_completa', locals: { bateria: @bateria_detalhe.bateria } %>")
 ready()

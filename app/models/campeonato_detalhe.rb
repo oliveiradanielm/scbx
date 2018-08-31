@@ -17,6 +17,6 @@ class CampeonatoDetalhe < ApplicationRecord
   end
 
   def inscritos
-    Inscricao.includes(:atleta).where(etapa_id: self.etapa_id, categoria_id: self.categoria_id)
+    Inscricao.includes(:atleta).where(etapa_id: self.etapa_id, categoria_id: self.categoria_id).order('atletas.nome')
   end
 end

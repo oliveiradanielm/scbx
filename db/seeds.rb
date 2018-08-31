@@ -44,6 +44,6 @@ Categoria.create(descricao: 'BMX Especial', idade_minima: 1, idade_maxima: 99, g
 150.times{ Atleta.create(nome: Faker::GameOfThrones.character, cpf: Faker::Number.number(11), data_nascimento: Faker::Date.birthday(18, 65), email: Faker::Internet.email, sexo: 1, uf: 'CE', cidade: 'Fortaleza')}
 Campeonato.create(titulo: 'Copa Brasil', descricao: 'Centro Olímpico de Fortaleza - Ceará')
 Etapa.create(descricao: '#3 Etapa', data: '02/09/2018', cidade: 'Fortaleza', uf: 'CE', campeonato_id: Campeonato.first.id)
-100.times{ Inscricao.create(atleta_id: Faker::Number.between(1, 150), categoria_id: Faker::Number.between(1, 37), etapa_id: Etapa.first.id, confirmado: false, placa: Faker::Number.between(1, 800))}
+100.times{ Inscricao.create(atleta_id: Faker::Number.between(1, 150), categoria_id: Faker::Number.between(1, 20), etapa_id: Etapa.first.id, confirmado: false, placa: Faker::Number.between(1, 800))}
 
 %w(Classificatória Oitavas Quartas Semi-Final Final).each{|c| TipoBateria.create(descricao: c)}

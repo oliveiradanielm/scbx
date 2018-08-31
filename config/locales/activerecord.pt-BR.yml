@@ -13,7 +13,6 @@ pt-BR:
       tipo_bateria: Tipos de Bateria
       bateria_detalhe: Detalhes da Bateria
       campeonato_detalhe: Detalhes do Campeonato
-      campeonato_detalhe: Detalhes do Campeonato
     attributes:
       post:
         title: Título
@@ -62,6 +61,7 @@ pt-BR:
         tipo_bateria_id: Tipo de Bateria
         numero: Número
         campeonato_detalhe_id: Etapa/Categoria
+        bateria_detalhes: Atletas/Inscritos
       bateria_detalhe:
         bateria_id: Bateria
         inscricao_id: Atleta

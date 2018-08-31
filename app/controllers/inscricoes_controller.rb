@@ -61,6 +61,7 @@
     end
 
     def get_atleta
+      # inscrito_id = params['bateria']['bateria_detalhes_attributes']['0']['inscricao_id']
       @inscrito = Inscricao.find_by(id: params[:bateria][:inscricao_id])
       @bateria = Bateria.new(campeonato_detalhe_id: params[:campeonato_detalhe_id])
       session[:inscritos] = @bateria.campeonato_detalhe.inscritos.collect{|x| [x.nome_placa,x.id]}#.to_h.tap{ |x| x.delete(@inscrito.id)}
