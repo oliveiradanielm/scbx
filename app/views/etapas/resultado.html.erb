@@ -1,0 +1,59 @@
+<h3 class="ui dividing header">Etapa: <%= "#{@etapa.campeonato.titulo} - #{@etapa.descricao} - #{@etapa.cidade}/#{@etapa.uf} - #{@etapa.data}" %></h3>
+<% @etapa.campeonato_detalhes.includes(:categoria).order(:ordem)&.each do |c| %>
+  <div class="content">
+    <p class="transition hidden">
+    <table class="ui small table">
+      <%= hidden_field_tag 'campeonato_detalhe_id', c.id %>
+      <% c.baterias.includes(:tipo_bateria)&.each do |bateria| %>
+        <table class="ui blue very compact celled striped structured table" id="bateria-<%= bateria.id %>">
+          <thead>
+          <tr>
+            <th colspan="10" class="center aligned blue inverted"><%= bateria.campeonato_detalhe.detalhes %> - <%= bateria.tipo_bateria.descricao %> - Ordem: <%= bateria.numero %> - Pilotos nessa bateria: <%= bateria&.bateria_detalhes&.count %> - Código: <b><%= bateria&.codigo %></b></th>
+            <th id="impressao" colspan="2"><%= check_box_tag 'bateria_impressao', true, false %> Imprimir</th>
+          </tr>
+          <tr>
+            <th rowspan="2">Nº</th>
+            <th rowspan="2">Atleta/Placa</th>
+            <th rowspan="2">UF</th>
+            <th colspan="3" class="center aligned">Baterias</th>
+            <th colspan="3" class="center aligned">Classificação</th>
+            <th rowspan="2">Pontos</th>
+            <th rowspan="2">Resultado Final</th>
+          </tr>
+          <tr>
+            <th>1ª</th>
+            <th>2ª</th>
+            <th>3ª</th>
+            <th>1ª</th>
+            <th>2ª</th>
+            <th>3ª</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% bateria&.bateria_detalhes&.includes(inscricao: :atleta).order(:raia_1).each_with_index do |d, i| %>
+            <tr id="list-atleta-<%= d.id %>-<%= i %>">
+              <td ><%= i+1 %></td>
+              <td ><%= d.inscricao.nome_placa %></td>
+              <td ><%= d.inscricao.atleta.uf %></td>
+              <td ><%= d.raia_1 %></td>
+              <td ><%= d.raia_2 %></td>
+              <td ><%= d.raia_3 %></td>
+              <td><div class="one wide field"><%= d.resultado_1 %></div></td>
+              <td><div class="one wide field"><%= d.resultado_2 %></div></td>
+              <td><div class="one wide field"><%= d.resultado_3 %></div></td>
+              <td class="<%= (d.resultado_geral < 4) ? 'warning' : '' rescue '' %>"><i class="<%= (d.resultado_geral < 4) ? 'attention icon' : '' rescue '' %>"></i><%= d.pontos %></td>
+              <td class="<%= (d.resultado_geral < 4) ? 'positive' : '' rescue '' %>"><i class="<%= (d.resultado_geral < 4) ? 'checkmark icon' : '' rescue '' %>"></i><%= d.resultado_geral %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% end -%>
+      <br>
+    </table>
+    </p>
+  </div>
+<% end %>
+
+<style type="text/css">
+
+</style>

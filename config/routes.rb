@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   post '/inscricoes/confirmar_inscricao', as: :confirmar_inscricao
   get 'get_atleta' => 'inscricoes#get_atleta'
   resources :campeonatos do
-    resources :etapas
+    resources :etapas do
+      get :resultado
+    end
   end
   resources :categorias
   resources :tipo_categorias
@@ -29,4 +31,5 @@ Rails.application.routes.draw do
   resources :posts do
     resources :file_uploads, only: [:new, :create, :destroy]
   end
+
 end

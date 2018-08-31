@@ -47,6 +47,21 @@
       @etapa.destroy
       redirect_to etapas_url, notice: t('flash.destroy.notice')
     end
+
+    def resultado
+      begin
+        @etapa = Etapa.find(1)
+        respond_to do |format|
+          format.html {render layout: 'pdf.html'}
+          format.pdf do
+            return render pdf: "resultado", template: "etapas/resultado.html.erb", layout: 'pdf.html', page_size: 'A4'
+          end
+        end
+      rescue => e
+        puts e.inspect
+        flash[:error] = e.message
+      end
+    end
   
     private
       # Use callbacks to share common setup or constraints between actions.
