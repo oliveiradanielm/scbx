@@ -19,7 +19,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @bateria.bateria_detalhes&.each_with_index do |d, i| %>
+  <% @bateria.bateria_detalhes.includes(inscricao: :atleta)&.each_with_index do |d, i| %>
     <tr>
       <td ><%= i+1 %></td>
       <td ><%= d.inscricao.nome_placa %></td>

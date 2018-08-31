@@ -12,7 +12,8 @@ class CampeonatoDetalhe < ApplicationRecord
   end
 
   def detalhes
-    "#{self.campeonato.titulo} - #{self.etapa.descricao} - #{self.categoria.descricao}"
+    c = CampeonatoDetalhe.includes(:campeonato, :etapa, :categoria).where(id: self.id).first
+    "#{c.campeonato.titulo} - #{c.etapa.descricao} - #{c.categoria.descricao}"
   end
 
   def inscritos

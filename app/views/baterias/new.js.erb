@@ -1,4 +1,4 @@
-$('.ui.modal').find('.header').html('Nova Bateria')
+$('.ui.modal').find('.header').html("Nova Bateria - <%= @bateria.campeonato_detalhe.detalhes if @bateria.campeonato_detalhe_id.present? %>")
 $('.ui.modal').find('.content').html("<%= j render partial: 'baterias/form', locals: { bateria: @bateria, modal: true } %>")
 $('.ui.modal').modal('show');
-$('select.dropdown').dropdown({ fullTextSearch: true });
+ready()

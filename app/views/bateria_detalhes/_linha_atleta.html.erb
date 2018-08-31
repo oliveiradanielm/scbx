@@ -1,5 +1,5 @@
   <td ><%= row.to_i+1 %><%= hidden_field_tag "bateria[bateria_detalhes_attributes][#{row}][inscricao_id]", inscrito.id %></td>
-  <td ><%= select_tag 'bateria_detalhe[inscricao_id]', options_from_collection_for_select(bateria.campeonato_detalhe.inscritos, "id", "nome_placa", inscrito.id), prompt: "Selecione", class: 'ui search dropdown', data: { remote: true, url: get_atleta_path(row: row, bateria_id: bateria) } %></td>
+  <td ><%= select_tag 'bateria_detalhe[inscricao_id]', options_for_select(session[:inscritos], inscrito.id), prompt: "Selecione", class: 'ui search dropdown', data: { remote: true, url: get_atleta_path(row: row, bateria_id: bateria) } %></td>
   <td><%= inscrito.atleta.uf %></td>
   <td><%= raias_1[row.to_i] %><%= hidden_field_tag "bateria[bateria_detalhes_attributes][#{row}][raia_1]", raias_1[row.to_i] %></td>
   <td><%= raias_2[row.to_i] %><%= hidden_field_tag "bateria[bateria_detalhes_attributes][#{row}][raia_2]", raias_2[row.to_i] %></td>

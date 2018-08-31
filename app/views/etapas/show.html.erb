@@ -1,15 +1,15 @@
 <h3 class="ui dividing header">Etapa: <%= "#{@etapa.campeonato.titulo} - #{@etapa.descricao} - #{@etapa.cidade}/#{@etapa.uf} - #{@etapa.data}" %></h3>
 <div class="ui styled fluid accordion">
-  <% @etapa.campeonato_detalhes.includes(:categoria, :baterias).order(:ordem)&.each do |c| %>
+  <% @etapa.campeonato_detalhes.includes(:categoria).order(:ordem)&.each do |c| %>
     <div class="title">
       <i class="dropdown icon"></i>
-      <%= c.categoria.descricao %>
+      <%= "#{c.categoria.descricao} - #{c.inscritos.count} Pilotos" %>
     </div>
     <div class="content">
       <p class="transition hidden">
         <%= link_to('Criar Bateria', new_bateria_path(campeonato_detalhe_id: c), remote: true, class: 'ui primary button') %>
         <table class="ui small table">
-        <% c.baterias&.each do |bateria| %>
+        <% c.baterias.includes(:tipo_bateria)&.each do |bateria| %>
           <%= render partial: 'baterias/bateria_completa', locals: { bateria: bateria } %>
         <% end %>
         </table>
