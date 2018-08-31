@@ -26,6 +26,12 @@ class BateriasController < ApplicationController
     @bateria = Bateria.new(bateria_params)
     respond_to do |format|
       if @bateria.save
+        # CampeonatoDetalhe.where()
+        # @bateria.campeonato_detalhe.baterias do |bateria|
+        #   bateria.bateria_detalhes.update_all(classificado: false)
+
+          BateriaDetalhe.joins(bateria: :campeonato_detalhe).where(baterias: {campeonato_detalhe_id: @bateria.campeonato_detalhe_id} ).update_all(classificado: false)
+        # end
         format.html {redirect_to campeonato_etapa_path(@bateria.campeonato_detalhe.campeonato, @bateria.campeonato_detalhe.etapa), notice: t('flash.create.notice')}
       else
         @bateria.bateria_detalhes.build if @bateria.bateria_detalhes.empty?
@@ -48,6 +54,12 @@ class BateriasController < ApplicationController
     @etapa = @bateria.campeonato_detalhe.etapa
     @bateria.destroy
     redirect_to @etapa, notice: t('flash.destroy.notice')
+  end
+
+  def new_bateria
+    @bateria = Bateria.new(campeonato_detalhe_id: params[:campeonato_detalhe_id])
+    @bateria.bateria_detalhes.build
+    @raias_rand = (1..8).to_a.shuffle
   end
 
   def new_fase

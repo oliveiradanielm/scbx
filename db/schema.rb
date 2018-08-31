@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_31_030743) do
+ActiveRecord::Schema.define(version: 2018_08_31_204617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2018_08_31_030743) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.string "clube"
   end
 
   create_table "audits", force: :cascade do |t|
@@ -97,7 +98,7 @@ ActiveRecord::Schema.define(version: 2018_08_31_030743) do
     t.integer "raia_2"
     t.integer "raia_3"
     t.integer "resultado_1"
-    t.string "resultado_2"
+    t.integer "resultado_2"
     t.integer "resultado_3"
     t.integer "resultado_geral"
     t.integer "pontos"
@@ -173,13 +174,6 @@ ActiveRecord::Schema.define(version: 2018_08_31_030743) do
     t.index ["atleta_id"], name: "index_inscricoes_on_atleta_id"
     t.index ["categoria_id"], name: "index_inscricoes_on_categoria_id"
     t.index ["etapa_id"], name: "index_inscricoes_on_etapa_id"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string "message"
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "tipo_baterias", force: :cascade do |t|

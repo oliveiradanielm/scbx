@@ -71,6 +71,19 @@
         format.js {  }
       end
     end
+
+    def get_atleta_fase
+      # inscrito_id = params['bateria']['bateria_detalhes_attributes']['0']['inscricao_id']
+      inscricao_id = params[:bateria].blank? ? params[:bateria_detalhe][:inscricao_id] : params[:bateria][:inscricao_id]
+      @inscrito = Inscricao.find_by(id: inscricao_id)
+      @bateria = Bateria.new(campeonato_detalhe_id: params[:campeonato_detalhe_id])
+      @atleta = @inscrito.atleta
+      @row = params[:row]
+      @raia = params[:raia]
+      respond_to do |format|
+        format.js {  }
+      end
+    end
   
     private
       # Use callbacks to share common setup or constraints between actions.
