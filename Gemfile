@@ -38,7 +38,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
-gem 'devise-bootstrapped'
 gem "audited", "~> 4.7"
 gem 'paranoia'
 gem 'ransack'

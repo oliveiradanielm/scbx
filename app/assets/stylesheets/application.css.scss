@@ -18,7 +18,17 @@
  */
 @import "font-awesome-sprockets";
 @import "font-awesome";
-//@fontPath 'themes/default/assets/fonts';
+
+body > .grid {
+  height: 100%;
+}
+.image {
+  margin-top: -100px;
+}
+.column {
+  max-width: 450px;
+  //@fontPath 'themes/default/assets/fonts';
+}
 
 .ui.dropdown .remove.icon {
   font-size: 0.857143em;
