@@ -23,5 +23,14 @@
           <a class="item" href="<%= campeonato_etapas_path(campeonato_id: 1) %>">Etapas</a>
         </div>
       </div>
+    <div class="ui simple dropdown item right">
+      <i class="cogs icon"></i>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <%= link_to(logout_path, :method => :delete, class: 'item') do %>
+            <i class="power off icon"></i> Sair
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

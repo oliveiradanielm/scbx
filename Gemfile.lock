@@ -106,7 +106,6 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
-    devise-bootstrapped (0.1.1)
     erubi (1.7.1)
     execjs (2.7.0)
     faker (1.9.1)
@@ -295,7 +294,6 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
-  devise-bootstrapped
   faker
   font-awesome-sass (= 4.7.0)
   jbuilder (~> 2.5)
@@ -324,4 +322,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.2
+   1.16.3

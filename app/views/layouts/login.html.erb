@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SCBx</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<div class="ui inverted dimmer" id="main-loading">
+  <div class="ui big text loader">Carregando</div>
+</div>
+<div class="ui container">
+  <%= flash_messages %>
+  <%= yield %>
+</div>
+<%= render partial: 'layouts/modal' %>
+</body>
+</html>
