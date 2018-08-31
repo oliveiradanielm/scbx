@@ -1,0 +1,1 @@
+  <td ><%= select_tag 'bateria_detalhe[inscricao_id]', options_for_select(session[:inscritos], inscrito.id), prompt: "Selecione", class: 'ui search dropdown', data: { remote: true, url: get_atleta_path(row: row, bateria_id: bateria) } %></td>
