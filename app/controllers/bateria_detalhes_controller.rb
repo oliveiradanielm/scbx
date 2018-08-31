@@ -65,6 +65,18 @@ class BateriaDetalhesController < ApplicationController
     @row = params[:row]
   end
 
+  def set_classificado
+    @bateria_detalhe = BateriaDetalhe.find_by(id: params[:bateria_detalhe_id])
+    if @bateria_detalhe.present? and (@bateria_detalhe.classificado.nil? or not @bateria_detalhe.classificado)
+      @bateria_detalhe.update_attribute(:classificado, true)
+      @msg = 'Atleta marcado como classificado'
+    else
+      @bateria_detalhe.update_attribute(:classificado, false)
+      @msg = 'Atleta NÃO foi classificado'
+    end
+
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

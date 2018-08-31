@@ -1,7 +1,7 @@
 <table class="ui blue very compact celled striped structured table" id="bateria-<%= bateria.id %>">
   <thead>
   <tr>
-    <th colspan="12" class="center aligned blue inverted"><%= bateria.campeonato_detalhe.detalhes %> - <%= bateria.tipo_bateria.descricao %> - Ordem: <%= bateria.numero %> - Pilotos nessa bateria: <%= bateria&.bateria_detalhes&.count %></th>
+    <th colspan="12" class="center aligned blue inverted"><%= bateria.campeonato_detalhe.detalhes %> - <%= bateria.tipo_bateria.descricao %> - Ordem: <%= bateria.numero %> - Pilotos nessa bateria: <%= bateria&.bateria_detalhes&.count %> - Código: <b><%= bateria&.codigo %></b></th>
   </tr>
   <tr>
     <th rowspan="2">Nº</th>
@@ -38,7 +38,7 @@
       <td class="<%= (d.resultado_geral < 4) ? 'positive' : '' rescue '' %>"><i class="<%= (d.resultado_geral < 4) ? 'checkmark icon' : '' rescue '' %>"></i><%= d.resultado_geral %></td>
       <td>
         <div class="ui toggle checkbox">
-          <input type="checkbox" name="inscritos[]" value="<%= d.id %>">
+          <%= check_box_tag 'bateria_detalhe_id', d.id, d.classificado, data: { method: :post, remote: true, url: set_classificado_path} %>
           <label>Passou</label>
         </div>
       </td>

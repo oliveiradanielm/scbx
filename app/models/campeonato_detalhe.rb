@@ -19,4 +19,15 @@ class CampeonatoDetalhe < ApplicationRecord
   def inscritos
     Inscricao.includes(:atleta).where(etapa_id: self.etapa_id, categoria_id: self.categoria_id).order('atletas.nome')
   end
+
+  def inscritos_nova_fase
+    inscritos = []
+    self.baterias.collect do |b|
+      b.bateria_detalhes.where(classificado: true).each do |d|
+        inscritos << d.inscricao
+      end
+    end
+    inscritos
+  end
+
 end

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
   end
   post 'set_resultado' => 'bateria_detalhes#set_resultado'
+  post 'set_classificado' => 'bateria_detalhes#set_classificado'
   resources :campeonato_detalhes
   resources :tipo_baterias
   resources :inscricoes

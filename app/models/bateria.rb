@@ -9,4 +9,8 @@ class Bateria < ApplicationRecord
   def ordem
 
   end
+
+  def codigo
+    "C#{self.campeonato_detalhe.campeonato.id}E#{self.campeonato_detalhe.etapa.id}C#{self.campeonato_detalhe.id}B#{self.id}"
+  end
 end
