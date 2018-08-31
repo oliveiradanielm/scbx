@@ -11,7 +11,7 @@
       <table class="ui small table">
         <%#= form_tag(new_fase_baterias_path) do -%>
           <%= hidden_field_tag 'campeonato_detalhe_id', c.id %>
-          <% c.baterias.includes(:tipo_bateria)&.each do |bateria| %>
+          <% c.baterias.includes(:tipo_bateria)&.order(created_at: :desc).each do |bateria| %>
             <%= render partial: 'baterias/bateria_completa', locals: {bateria: bateria} %>
           <% end -%>
 <!--          <div class="ui form">-->
@@ -30,7 +30,9 @@
           <br>
         <%# end %>
       </table>
+      <%= link_to('Nova Fase', new_bateria_baterias_path(campeonato_detalhe_id: c), remote: true, class: 'ui primary button') %>
       </p>
+
     </div>
   <% end %>
 </div>

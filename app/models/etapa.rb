@@ -4,6 +4,7 @@ class Etapa < ApplicationRecord
   validates_uniqueness_of :descricao, scope: :campeonato_id, message: 'já existente para este campeonato.'
   belongs_to :campeonato
   has_many :campeonato_detalhes
+  has_many :inscricoes
 
   def self.to_dropdown
     Etapa.includes(:campeonato).order(:data).collect{|a| [a.completo, a.id]}

@@ -1,0 +1,11 @@
+  <td ><%= row.to_i+1 %><%= hidden_field_tag "bateria[bateria_detalhes_attributes][#{row}][inscricao_id]", inscrito.id %></td>
+  <td ><%= select_tag 'bateria_detalhe[inscricao_id]', options_for_select(bateria.campeonato_detalhe.inscritos_nova_fase.collect {|i| [i.nome_placa, i.id] }, inscrito.id), prompt: "Selecione", class: 'ui search dropdown', data: { remote: true, url: get_atleta_fase_path(row: row, bateria_id: bateria, campeonato_detalhe_id: bateria.campeonato_detalhe_id, raia: raia) } %></td>
+  <td><%= inscrito.atleta.uf %></td>
+  <td><%= raia %><%= hidden_field_tag "bateria[bateria_detalhes_attributes][#{row}][raia_1]", raia %></td>
+  <td><%#= raias_2[row.to_i] %><%#= hidden_field_tag "bateria[bateria_detalhes_attributes][#{row}][raia_2]", raias_2[row.to_i] %></td>
+  <td><%#= raias_3[row.to_i] %><%#= hidden_field_tag "bateria[bateria_detalhes_attributes][#{row}][raia_3]", raias_3[row.to_i] %></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>

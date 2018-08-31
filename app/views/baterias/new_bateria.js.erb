@@ -1,0 +1,4 @@
+$('.ui.modal').find('.header').html("Nova Bateria - <%= "#{@bateria.campeonato_detalhe.detalhes} - #{@bateria.campeonato_detalhe.inscritos.count} pilotos" if @bateria.campeonato_detalhe_id.present? %>")
+$('.ui.modal').find('.content').html("<%= j render partial: 'baterias/form_new_fase', locals: { bateria: @bateria, modal: true } %>")
+$('.ui.modal').modal('show');
+ready()

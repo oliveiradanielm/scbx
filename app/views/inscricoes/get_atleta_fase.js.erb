@@ -1,0 +1,2 @@
+$('#atleta-<%= @row %>').html("<%= j render partial: 'bateria_detalhes/linha_atleta_fase', locals: { bateria: @bateria, inscrito: @inscrito, atleta: @atleta, row: @row, raia: @raia } %>")
+$('select.dropdown').dropdown({ fullTextSearch: true });

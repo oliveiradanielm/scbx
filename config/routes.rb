@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :baterias do
     collection do
       post 'new_fase'
+      get 'new_bateria'
     end
     resources :bateria_detalhes, as: :detalhes do
     end
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   resources :inscricoes
   post '/inscricoes/confirmar_inscricao', as: :confirmar_inscricao
   get 'get_atleta' => 'inscricoes#get_atleta'
+  get 'get_atleta_fase' => 'inscricoes#get_atleta_fase'
   resources :campeonatos do
     resources :etapas do
       get :resultado
