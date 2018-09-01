@@ -3,7 +3,7 @@ class CampeonatoDetalhe < ApplicationRecord
   belongs_to :categoria
   belongs_to :etapa
   belongs_to :campeonato
-  has_many :baterias
+  has_many :baterias, inverse_of: :campeonato_detalhe, dependent: :destroy
   validates_presence_of :categoria_id, :etapa_id, :campeonato
   validates_uniqueness_of :categoria_id, scope: [:etapa_id, :campeonato], message: 'já registrada para esta etapa.'
 

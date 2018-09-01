@@ -55,7 +55,7 @@ class AtletasController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def atleta_params
-    params.require(:atleta).permit(:nome, :nacionalidade, :naturalidade, :data_nascimento, :sexo, :cpf, :rg, :email, :passaporte, :validade_passaporte, :tipo_sanguineo_id, :licenca_cbc, :codigo_uci, :nome_mae, :nome_pai, :logradouro, :numero, :complemento, :bairro, :cep, :cidade, :uf, :telefone_residencial, :telefone_celular)
+    params.require(:atleta).permit(:nome, :nacionalidade, :naturalidade, :data_nascimento, :sexo, :cpf, :rg, :email, :passaporte, :validade_passaporte, :tipo_sanguineo_id, :licenca_cbc, :codigo_uci, :nome_mae, :nome_pai, :logradouro, :numero, :complemento, :bairro, :cep, :cidade, :uf, :telefone_residencial, :telefone_celular, inscricoes_attributes: [:id, :categoria_id, :etapa_id, :placa, :_destroy])
   end
 end
   

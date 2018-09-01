@@ -4,8 +4,8 @@ class Inscricao < ApplicationRecord
   belongs_to :atleta
   belongs_to :categoria
   belongs_to :etapa
-  has_many :bateria_detalhes, inverse_of: :inscricao
-  validates_presence_of :atleta_id, :categoria_id, :etapa_id, :placa
+  has_many :bateria_detalhes, inverse_of: :inscricao, dependent: :destroy
+  # validates_presence_of :atleta_id, :categoria_id, :etapa_id, :placa
   validates_uniqueness_of :atleta_id, scope: [:categoria_id, :etapa_id], message: 'já inscrito nesta categoria.'
   after_commit :gravar_detalhes
 

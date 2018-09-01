@@ -10,19 +10,14 @@
     </div>
 
     <div class="field">
-      <%= f.label :cpf %>
-      <%= f.search_field :cpf_cont %>
+      <%= f.label :licenca_cbc %>
+      <%= f.search_field :licenca_cbc_cont %>
     </div>
 
     <div class="field">
-      <%= f.label :cidade %>
-      <%= f.search_field :cidade_cont %>
-    </div>
-
-    <div class="field">
-      <%= f.label :nome %>
+      <%= f.label :uf %>
       <div class="ui action input">
-        <%= f.search_field :nome_cont %>
+        <%= f.search_field :uf_cont %>
         <button class="ui primary icon button" type="submit" data-tooltip="<%= t('ransack.search').capitalize %>" data-inverted="">
           <i class="search icon"></i>
         </button>
@@ -38,12 +33,11 @@
   <table class="ui striped table">
     <thead>
     <tr>
-      <th><%= sort_link(@q, :nome, Atleta.human_attribute_name(:nome)) %></th>
-      <th><%= sort_link(@q, :data_nascimento, Atleta.human_attribute_name(:data_nascimento)) %></th>
-      <th><%= sort_link(@q, :cpf, Atleta.human_attribute_name(:cpf)) %></th>
-      <th><%= sort_link(@q, :email, Atleta.human_attribute_name(:email)) %></th>
-      <th><%= sort_link(@q, :cidade, Atleta.human_attribute_name(:cidade)) %></th>
-      <th><%= sort_link(@q, :uf, Atleta.human_attribute_name(:uf)) %></th>
+      <th>ID</th>
+      <th><%= sort_link(@q, :nome) %></th>
+      <th><%= sort_link(@q, :licenca_cbc) %></th>
+      <th><%= sort_link(@q, :cidade) %></th>
+      <th><%= sort_link(@q, :uf) %></th>
       <th><%= t('helpers.links.actions') %></th>
     </tr>
     </thead>
@@ -51,10 +45,9 @@
     <tbody>
     <% @atletas&.each do |atleta| %>
       <tr>
+        <td><%= atleta.id %></td>
         <td><%= atleta.nome %></td>
-        <td><%= atleta.data_nascimento&.strftime('%d/%m/%Y') %></td>
-        <td><%= atleta.cpf %></td>
-        <td><%= atleta.email %></td>
+        <td><%= atleta.licenca_cbc %></td>
         <td><%= atleta.cidade %></td>
         <td><%= atleta.uf %></td>
         <td>

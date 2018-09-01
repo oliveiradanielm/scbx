@@ -7,7 +7,7 @@
       <%= f.search_field :atleta_nome_cont, placeholder: 'Atleta' %>
     </div>
     <div class="field">
-      <%= f.search_field :placa, placeholder: 'Placa' %>
+      <%= f.search_field :placa_eq, placeholder: 'Placa' %>
     </div>
     <div class="field">
       <%= f.search_field :categoria_descricao_cont, placeholder: 'Categoria' %>
@@ -30,8 +30,9 @@
 <table class="ui teal very compact striped table">
   <thead>
   <tr>
+    <th>ID</th>
     <th><%= sort_link(@q, :atleta_nome, Inscricao.human_attribute_name(:atleta_id)) %></th>
-    <th><%= sort_link(@q, :placa, Inscricao.human_attribute_name(:placa)) %></th>
+    <th><%= sort_link(@q, :placa) %></th>
     <th><%= sort_link(@q, :categoria_descricao, Inscricao.human_attribute_name(:categoria_id)) %></th>
     <th><%= sort_link(@q, :etapa_descricao, Inscricao.human_attribute_name(:etapa_id)) %></th>
     <th><%= sort_link(@q, :confirmado) %></th>
@@ -42,7 +43,8 @@
   <tbody>
   <% @inscricoes.each do |inscricao| %>
     <tr>
-      <td><%= inscricao.atleta&.nome %></td>
+      <td><%= inscricao.id %></td>
+      <td><%= "#{inscricao.atleta&.id}-#{inscricao.atleta&.nome}" %></td>
       <td><%= inscricao.placa %></td>
       <td><%= inscricao.categoria.descricao %></td>
       <td><%= inscricao.etapa.completo %></td>
