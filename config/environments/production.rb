@@ -100,7 +100,7 @@ Rails.application.configure do
       authentication: "plain",
       enable_starttls_auto: true,
       user_name: "scbxsistema@gmail.com",
-      password: "Scbx@1234()",
+      password: "____",
       :openssl_verify_mode  => 'none'
   }
 end
