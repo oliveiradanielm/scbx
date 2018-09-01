@@ -53,7 +53,7 @@ class BateriasController < ApplicationController
   def destroy
     @etapa = @bateria.campeonato_detalhe.etapa
     @bateria.destroy
-    redirect_to @etapa, notice: t('flash.destroy.notice')
+    redirect_to baterias_url, notice: t('flash.destroy.notice')
   end
 
   def new_bateria

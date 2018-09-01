@@ -1,3 +1,4 @@
+<%= image_tag 'banner.png' %>
 <h3 class="ui dividing header">Etapa: <%= "#{@etapa.campeonato.titulo} - #{@etapa.descricao} - #{@etapa.cidade}/#{@etapa.uf} - #{@etapa.data}" %></h3>
 <% @etapa.campeonato_detalhes.includes(:categoria).order(:ordem)&.each do |c| %>
   <div class="content">
